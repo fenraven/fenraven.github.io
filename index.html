@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Fenraven Studio is an independent game studio. Our first game, Ashen Dynasty: Dragons &amp; Heirs, is coming to Android.">
+<title>Fenraven Studio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<style>
+/* Layout: a full-bleed fen at dusk with the studio name set low and left, like a title painted on a landscape;
+   below it the page narrows to one left-aligned reading column, broken once by an ember-lit band for the game. */
+:root {
+  color-scheme: dark;
+  --peat: #0f1f1e;        /* page ground: wet peat, green-black */
+  --bog: #183330;         /* raised surfaces */
+  --sedge: #2c4f48;       /* rules, borders */
+  --mist: #c5d2c9;        /* body text */
+  --bone: #efe9d9;        /* headings */
+  --reed: #d2b266;        /* studio accent: dry reed gold */
+  --ember: #e0703a;       /* the game's own colour */
+  --ash: #2a1714;         /* game band ground: banked coals */
+  --ash-rule: #5a2e22;
+  --ash-text: #e6cdbd;
+  --display: "IM Fell English", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --body: "Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --step-0: 1.125rem;
+  --step-1: 1.5rem;
+  --step-2: 2.25rem;
+  --step-3: clamp(2.75rem, 7vw, 4.5rem);
+  --step-4: clamp(3.25rem, 11vw, 7.5rem);
+}
+body {
+  background: var(--peat);
+  color: var(--mist);
+  font-family: var(--body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+}
+.wrap {
+  max-width: 68rem;
+  margin-inline: auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--display); font-weight: 400; color: var(--bone); text-wrap: balance; margin: 0; }
+p { margin: 0; max-width: 34em; }
+a { color: var(--reed); text-underline-offset: 0.2em; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--bone); outline-offset: 3px; }
+
+/* ---------- hero ---------- */
+.hero { position: relative; overflow: hidden; background: var(--peat); }
+.hero canvas { display: block; width: 100%; height: clamp(26rem, 78vw, 40rem); }
+.hero-top {
+  position: absolute; inset: 0 0 auto 0;
+  padding-block: 1.25rem;
+}
+.hero-top .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; align-items: center; justify-content: space-between; }
+.mark { display: flex; align-items: center; gap: 0.6rem; font-family: var(--display); font-size: 1.25rem; color: var(--bone); text-decoration: none; }
+.mark svg { width: 1.6rem; height: 1.6rem; flex: none; }
+.nav { display: flex; gap: 1.5rem; }
+.nav a { color: var(--bone); text-decoration: none; border-bottom: 1px solid transparent; }
+.nav a:hover { border-bottom-color: var(--reed); }
+.hero-title {
+  position: absolute; inset: auto 0 0 0;
+  padding-block: 0 clamp(1.5rem, 5vw, 3.5rem);
+}
+.hero-title h1 { font-size: var(--step-4); line-height: 0.92; letter-spacing: -0.01em; }
+.hero-title h1 span { display: block; font-style: italic; color: var(--reed); font-size: 0.5em; line-height: 1.3; }
+.hero-title p { margin-top: 1rem; color: var(--bone); max-width: 26em; }
+
+/* ---------- studio ---------- */
+.studio { padding-block: clamp(3rem, 8vw, 6rem); }
+.studio .wrap { display: grid; gap: 2rem 4rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); }
+.studio h2 { font-size: var(--step-2); line-height: 1.15; }
+.studio .say { display: grid; gap: 1.1rem; align-content: start; min-width: 0; }
+.vows { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; align-content: start; min-width: 0; }
+.vows li { padding-block: 1rem; border-top: 1px solid var(--sedge); }
+.vows li:last-child { border-bottom: 1px solid var(--sedge); }
+.vows strong { display: block; font-family: var(--display); font-weight: 400; font-size: var(--step-1); color: var(--bone); line-height: 1.25; }
+
+/* ---------- game band ---------- */
+.game { background: var(--ash); color: var(--ash-text); padding-block: clamp(3rem, 8vw, 6rem); border-block: 1px solid var(--ash-rule); }
+.game a { color: var(--ember); }
+.game-head { display: grid; gap: 1rem; }
+.game-head h2 { font-size: var(--step-3); line-height: 1; }
+.game-head h2 em { display: block; font-size: 0.42em; line-height: 1.5; color: var(--ember); }
+.status { justify-self: start; border: 1px solid var(--ember); color: var(--ember); padding: 0.15rem 0.8rem; border-radius: 99px; font-weight: 500; font-size: 1rem; }
+.game-body { margin-top: 2.5rem; display: grid; gap: 2.5rem 4rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); align-items: start; }
+.feats { margin: 0; display: grid; gap: 1.4rem; min-width: 0; }
+.feats dt { font-family: var(--display); font-size: var(--step-1); color: var(--bone); line-height: 1.25; }
+.feats dd { margin: 0.2rem 0 0; max-width: 32em; }
+
+/* the chronicle: a small playable taste of succession */
+.chron { background: #1d0f0d; border: 1px solid var(--ash-rule); padding: 1.5rem; min-width: 0; display: grid; gap: 1rem; }
+.chron h3 { font-size: var(--step-1); }
+.chron .now { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; font-variant-numeric: tabular-nums; color: var(--bone); }
+.chron .now b { font-weight: 500; color: var(--ember); }
+.chron ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+.chron li { display: grid; grid-template-columns: 4.5rem 1fr; gap: 0.75rem; }
+.chron li span:first-child { font-variant-numeric: tabular-nums; color: var(--ember); }
+.chron li span:last-child { min-width: 0; }
+.chron li:not(:first-child) { opacity: 0.62; }
+.chron button {
+  justify-self: start; font: 500 1.05rem var(--body); cursor: pointer;
+  background: var(--ember); color: #1d0f0d; border: 0; padding: 0.65rem 1.3rem; border-radius: 2px;
+}
+.chron button:hover { background: #f08a55; }
+.chron small { font-size: 0.95rem; opacity: 0.75; }
+
+/* ---------- foot ---------- */
+.foot { padding-block: 2.5rem; }
+.foot .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; justify-content: space-between; font-size: 1rem; }
+.foot p { max-width: none; }
+</style>
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+
+<header class="hero">
+  <canvas id="fen" role="img" aria-label="A marsh at dusk. Ravens cross a low moon above reeds and still water."></canvas>
+  <div class="hero-top">
+    <div class="wrap">
+      <a class="mark" href="#top">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#efe9d9" d="M3 20 L13 9 L21 7 L29 10 L22 12 L19 18 L24 27 L15 21 L8 22 Z"/><circle cx="19.5" cy="9.8" r="1" fill="#0f1f1e"/></svg>
+        Fenraven
+      </a>
+      <nav class="nav" aria-label="Sections">
+        <a href="#studio">Studio</a>
+        <a href="#ashen-dynasty">Ashen Dynasty</a>
+      </nav>
+    </div>
+  </div>
+  <div class="hero-title" id="top">
+    <div class="wrap">
+      <h1>Fenraven <span>Studio</span></h1>
+      <p>An independent game studio. We build worlds you rule from your phone, and our first one is nearly ready.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="studio" id="studio">
+    <div class="wrap">
+      <div class="say">
+        <h2>Small studio, long games</h2>
+        <p>Fenraven makes strategy games for people who like to come back to the same world for months. A kingdom you start today should still be yours, and still be interesting, three rulers later.</p>
+        <p>We are working on one game at a time. Right now that game is <a href="#ashen-dynasty">Ashen Dynasty: Dragons &amp; Heirs</a>.</p>
+      </div>
+      <ul class="vows">
+        <li><strong>Your save stays with you</strong>The whole kingdom runs on your phone, so you can rule on a train, on a plane or with no signal at all.</li>
+        <li><strong>Free to play, fair to play</strong>Every dragon, rank and realm can be earned by playing. Paying only makes things faster.</li>
+        <li><strong>Built from player feedback</strong>Each release starts with a list of what players told us after the last one.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="game" id="ashen-dynasty">
+    <div class="wrap">
+      <div class="game-head">
+        <h2>Ashen Dynasty <em>Dragons &amp; Heirs</em></h2>
+        <span class="status">Coming to Android on Google Play</span>
+        <p>Your father has died and left you an estate, a court and one unhatched dragon egg. Build your kingdom, raise dragons and rule through the generations of your house.</p>
+      </div>
+
+      <div class="game-body">
+        <dl class="feats">
+          <div><dt>Raise dragons from the egg</dt><dd>Hatch them, name them and grow them to their final form. Storm, obsidian, bone and lung dragons each fight in their own way, and a grown dragon will carry you into the sky.</dd></div>
+          <div><dt>Found a house that outlives you</dt><dd>Marry, raise children and name your heir. When the ruler dies the heir is crowned, with their own traits, and the story carries on.</dd></div>
+          <div><dt>Take the realm seat by seat</dt><dd>Six realms and eighty seats of power lie on the map. Raid, besiege, take vassals and rise through seven ranks to Emperor.</dd></div>
+          <div><dt>Keep a court</dt><dd>Lady Eva advises you, lords plot, matchmakers call, and you can grant conquered fiefs to your own children and watch them earn their titles.</dd></div>
+          <div><dt>Something new each week</dt><dd>Thirty-day seasons and weekend events such as the Dragon Moon and the Grand Tourney bring fresh rewards.</dd></div>
+        </dl>
+
+        <div class="chron">
+          <h3>Try a hundred years of it</h3>
+          <div class="now"><span>Ruler <b id="c-ruler">You</b></span><span>Age <b id="c-age">24</b></span><span>Rulers so far <b id="c-gen">1</b></span></div>
+          <ol id="c-log" aria-live="polite"></ol>
+          <button type="button" id="c-go">Let the years pass</button>
+          <small>A toy version of succession in the game. Names and fates here are rolled at random.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>&copy; 2026 Fenraven Studio</p>
+    <p>Ashen Dynasty: Dragons &amp; Heirs is a Fenraven game.</p>
+  </div>
+</footer>
+
+<script>
+/* ---------- the fen ---------- */
+(function () {
+  var cv = document.getElementById('fen');
+  var ctx = cv.getContext('2d');
+  var W = 0, H = 0, dpr = 1;
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function rng(seed) { return function () { seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; }; }
+
+  var trees = [], reeds = [], ravens = [], mists = [];
+  function build() {
+    var r = rng(7);
+    trees = [];
+    for (var i = 0; i <= 80; i++) trees.push(0.35 + r() * 0.65 * (r() > 0.7 ? 1 : 0.45));
+    reeds = [];
+    var n = Math.round(W / 9);
+    for (i = 0; i < n; i++) reeds.push({ x: r() * W, h: 30 + r() * 90, lean: (r() - 0.5) * 0.5, ph: r() * 6.28, head: r() > 0.55 });
+    ravens = [];
+    for (i = 0; i < 9; i++) ravens.push({ x: r() * 1.3 - 0.15, y: 0.12 + r() * 0.3, s: 7 + r() * 11, v: 0.012 + r() * 0.014, ph: r() * 6.28, fl: 5 + r() * 3 });
+    mists = [];
+    for (i = 0; i < 6; i++) mists.push({ x: r(), y: 0.58 + r() * 0.2, w: 0.3 + r() * 0.4, v: (r() - 0.5) * 0.006, a: 0.05 + r() * 0.07 });
+  }
+
+  function size() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    build();
+  }
+
+  function raven(x, y, s, flap) {
+    var wy = Math.sin(flap) * s * 0.55;
+    ctx.beginPath();
+    ctx.moveTo(x - s, y - wy);
+    ctx.quadraticCurveTo(x - s * 0.45, y - wy * 0.3 - s * 0.28, x, y);
+    ctx.quadraticCurveTo(x + s * 0.45, y - wy * 0.3 - s * 0.28, x + s, y - wy);
+    ctx.quadraticCurveTo(x + s * 0.4, y - wy * 0.2 + s * 0.05, x + s * 0.12, y + s * 0.2);
+    ctx.lineTo(x - s * 0.3, y + s * 0.16);
+    ctx.quadraticCurveTo(x - s * 0.45, y - wy * 0.2 + s * 0.05, x - s, y - wy);
+    ctx.fill();
+  }
+
+  function draw(t) {
+    var hz = H * 0.62; // horizon
+    // sky
+    var g = ctx.createLinearGradient(0, 0, 0, hz);
+    g.addColorStop(0, '#0f1f1e'); g.addColorStop(0.55, '#1f423d'); g.addColorStop(1, '#6f8a74');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, hz);
+    // moon
+    var mx = W * 0.72, my = hz - H * 0.17, mr = Math.max(26, H * 0.075);
+    var halo = ctx.createRadialGradient(mx, my, mr * 0.5, mx, my, mr * 5);
+    halo.addColorStop(0, 'rgba(239,233,217,0.35)'); halo.addColorStop(1, 'rgba(239,233,217,0)');
+    ctx.fillStyle = halo; ctx.fillRect(0, 0, W, hz);
+    ctx.fillStyle = '#efe9d9'; ctx.beginPath(); ctx.arc(mx, my, mr, 0, 6.2832); ctx.fill();
+    // far treeline
+    ctx.fillStyle = '#13292a'; ctx.beginPath(); ctx.moveTo(0, hz);
+    for (var i = 0; i < trees.length; i++) ctx.lineTo(i / (trees.length - 1) * W, hz - trees[i] * H * 0.07);
+    ctx.lineTo(W, hz); ctx.fill();
+    // water
+    g = ctx.createLinearGradient(0, hz, 0, H);
+    g.addColorStop(0, '#4b6a5c'); g.addColorStop(0.35, '#1c3a36'); g.addColorStop(1, '#0f1f1e');
+    ctx.fillStyle = g; ctx.fillRect(0, hz, W, H - hz);
+    // moon path on the water
+    ctx.fillStyle = 'rgba(239,233,217,0.5)';
+    for (i = 0; i < 14; i++) {
+      var yy = hz + 4 + i * i * 0.9 + i * 3;
+      if (yy > H) break;
+      var ww = mr * (0.5 + i * 0.22) * (0.8 + 0.2 * Math.sin(t * 0.9 + i * 1.7));
+      ctx.globalAlpha = 0.5 - i * 0.03;
+      ctx.fillRect(mx - ww / 2 + Math.sin(t * 0.6 + i) * 3, yy, ww, 1.5);
+    }
+    ctx.globalAlpha = 1;
+    // ravens
+    ctx.fillStyle = '#081211';
+    for (i = 0; i < ravens.length; i++) {
+      var b = ravens[i];
+      var px = ((b.x + t * b.v) % 1.3 + 1.3) % 1.3 - 0.15;
+      raven(px * W, b.y * H + Math.sin(t * 0.5 + b.ph) * 6, b.s, t * b.fl + b.ph);
+    }
+    // mist
+    for (i = 0; i < mists.length; i++) {
+      var m = mists[i];
+      var cx = (((m.x + t * m.v) % 1.4) + 1.4) % 1.4 - 0.2;
+      var rg = ctx.createRadialGradient(cx * W, m.y * H, 0, cx * W, m.y * H, m.w * W);
+      rg.addColorStop(0, 'rgba(197,210,201,' + m.a + ')'); rg.addColorStop(1, 'rgba(197,210,201,0)');
+      ctx.save(); ctx.translate(0, m.y * H); ctx.scale(1, 0.14); ctx.translate(0, -m.y * H);
+      ctx.fillStyle = rg; ctx.beginPath(); ctx.arc(cx * W, m.y * H, m.w * W, 0, 6.2832); ctx.fill();
+      ctx.restore();
+    }
+    // reeds
+    ctx.strokeStyle = '#081211'; ctx.fillStyle = '#081211'; ctx.lineWidth = 1.6; ctx.lineCap = 'round';
+    for (i = 0; i < reeds.length; i++) {
+      var q = reeds[i];
+      var sway = Math.sin(t * 0.8 + q.ph) * 5 + q.lean * q.h;
+      var tx = q.x + sway, ty = H - q.h;
+      ctx.beginPath(); ctx.moveTo(q.x, H); ctx.quadraticCurveTo(q.x + sway * 0.2, H - q.h * 0.55, tx, ty); ctx.stroke();
+      if (q.head) { ctx.beginPath(); ctx.ellipse(tx, ty + 7, 2.4, 8, sway * 0.01, 0, 6.2832); ctx.fill(); }
+    }
+    // darken the foot so the title reads
+    g = ctx.createLinearGradient(0, H * 0.5, 0, H);
+    g.addColorStop(0, 'rgba(15,31,30,0)'); g.addColorStop(1, 'rgba(15,31,30,0.78)');
+    ctx.fillStyle = g; ctx.fillRect(0, H * 0.5, W, H * 0.5);
+  }
+
+  function frame(ms) { draw(ms / 1000); if (!still) requestAnimationFrame(frame); }
+  size();
+  window.addEventListener('resize', function () { size(); if (still) draw(3); });
+  if (still) draw(3); else requestAnimationFrame(frame);
+})();
+
+/* ---------- the chronicle ---------- */
+(function () {
+  var names = ['Aldric', 'Maren', 'Isolde', 'Corvin', 'Thessa', 'Edmar', 'Rowena', 'Halden', 'Sybil', 'Oswin', 'Brannoc', 'Elira', 'Garrick', 'Ysolt'];
+  var traits = ['the Builder', 'the Steward', 'the Warrior', 'the Strategist', 'the Pious', 'the Charmer', 'the Diplomat', 'the Farmer'];
+  function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+  function fate() { return 52 + Math.floor(Math.random() * 26); }
+
+  var year = 1, gen = 1;
+  var ruler = { name: 'You', age: 24, fate: fate() };
+  var heir = null;
+  var log = [['Year 1', 'Your father dies aged 61. You are crowned, and inherit his dragon egg.']];
+
+  var elR = document.getElementById('c-ruler'), elA = document.getElementById('c-age'),
+      elG = document.getElementById('c-gen'), elL = document.getElementById('c-log');
+
+  function show() {
+    elR.textContent = ruler.name; elA.textContent = ruler.age; elG.textContent = gen;
+    elL.textContent = '';
+    log.slice(0, 5).forEach(function (e) {
+      var li = document.createElement('li'), a = document.createElement('span'), b = document.createElement('span');
+      a.textContent = e[0]; b.textContent = e[1]; li.appendChild(a); li.appendChild(b); elL.appendChild(li);
+    });
+  }
+
+  document.getElementById('c-go').addEventListener('click', function () {
+    var yrs = 5 + Math.floor(Math.random() * 8);
+    year += yrs; ruler.age += yrs;
+    if (heir) heir.age += yrs;
+    var stamp = 'Year ' + year;
+    if (!heir) {
+      heir = { name: pick(names), age: Math.floor(Math.random() * yrs), trait: pick(traits) };
+      log.unshift([stamp, 'An heir is born to the house: ' + heir.name + '.']);
+    } else if (ruler.age >= ruler.fate && heir.age >= 16) {
+      var who = ruler.name === 'You' ? 'You die' : ruler.name + ' dies';
+      log.unshift([stamp, who + ' aged ' + ruler.age + '. ' + heir.name + ' ' + heir.trait + ' is crowned.']);
+      ruler = { name: heir.name, age: heir.age, fate: Math.max(heir.age + 12, fate()) };
+      heir = null; gen += 1;
+    } else if (heir.age >= 16 && !heir.grown) {
+      heir.grown = true;
+      log.unshift([stamp, heir.name + ' comes of age and is known as ' + heir.trait + '.']);
+    } else {
+      log.unshift([stamp, pick(['A dragon of the house reaches its final form.', 'A neighbouring lord swears fealty.', 'A siege ends in surrender. A new fief is yours.', 'The harvest is rich and the treasury fills.', 'A phoenix is seen over the estate.'])]);
+    }
+    show();
+  });
+  show();
+})();
+</script>
+
+</body>
+</html>
