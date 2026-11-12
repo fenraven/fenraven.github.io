@@ -339,14 +339,36 @@ function loop(el, fn) {
 /* ---------- game art ---------- */
 var ART = {};
 ['storm', 'obsidian', 'bone', 'lung'].forEach(function (k) { var im = new Image(); im.src = 'assets/paint-' + k + '.webp'; ART[k] = im; });
-var FLY = new Image(); FLY.src = 'assets/fly-storm.webp';       /* 20 frames, 10 x 2, 190 x 166 each */
-var PHX = new Image(); PHX.src = 'assets/fly-phoenix.webp';     /* 8 frames, 206 x 216 each */
+/* flight sprite sheets from the game: frame size, frame count, columns, frames per second */
+var FLYERS = {
+  storm:    { fw: 190, fh: 166, n: 20, cols: 10, fps: 7.14 },
+  obsidian: { fw: 190, fh: 170, n: 20, cols: 10, fps: 7.14 },
+  bone:     { fw: 190, fh: 165, n: 20, cols: 10, fps: 7.14 },
+  lung:     { fw: 190, fh: 180, n: 20, cols: 10, fps: 7.14 },
+  phoenix:  { fw: 206, fh: 216, n: 8, cols: 8, fps: 9.61 }
+};
+Object.keys(FLYERS).forEach(function (k) { var im = new Image(); im.src = 'assets/fly-' + k + '.webp'; FLYERS[k].img = im; });
+var PHX = FLYERS.phoenix.img;
 function ready(im) { return im.complete && im.naturalWidth > 0; }
 
 /* ---------- hero: the night fen ---------- */
 (function () {
   var cv = document.getElementById('fen'), hero = cv.parentNode, S, born = performance.now() / 1000;
   var trees, reeds, ravens, mists, flies = [], stars;
+  var flight = null, nextFlight = 3, passes = 0, lastDir = Math.random() < 0.5 ? 1 : -1, queue = [];
+  function newFlight(age) {
+    if (!queue.length) {   // each dragon once, in a shuffled order, before any repeats
+      queue = ['storm', 'obsidian', 'bone', 'lung'].sort(function () { return Math.random() - 0.5; });
+      if (passes > 0) queue.splice(1 + Math.floor(Math.random() * 3), 0, 'phoenix');
+    }
+    passes++;
+    lastDir = Math.random() < 0.7 ? -lastDir : lastDir;
+    var band = ['high', 'moon', 'low'][Math.floor(Math.random() * 3)];
+    var far = band === 'low';
+    return { k: queue.shift(), at: age, dur: (far ? 13 : 9) + Math.random() * 3, dir: lastDir, band: band,
+             climb: (Math.random() - 0.5) * 0.14, wob: Math.random() * 6.28,
+             scale: far ? 0.6 + Math.random() * 0.2 : 0.85 + Math.random() * 0.35, light: far ? 0.6 : 0.75 };
+  }
   function build() {
     var r = rng(11), W = S.w, H = S.h, i;
     trees = []; for (i = 0; i <= 90; i++) trees.push(0.3 + r() * 0.7 * (r() > 0.75 ? 1 : 0.4));
@@ -400,17 +422,23 @@ function ready(im) { return im.complete && im.naturalWidth > 0; }
     c.fillStyle = '#f2c879'; c.globalAlpha = 0.7 + 0.3 * Math.sin(t * 2.1);
     star4(c, mx - mr * 0.3, my - mr * 1.9, mr * 0.32 * (0.9 + 0.1 * Math.sin(t * 2.1)));
     c.globalAlpha = 1;
-    // a dragon crosses the moon every 26 seconds, the first time 3 seconds in
-    var cyc = 24, ph = ((age - 3) % cyc + cyc) % cyc;
-    if (age > 3 && ph < 10) {
-      var u = ph / 10, dx = -0.12 * W + u * W * 1.24, dy = my - mr * 1.2 + (dx - mx) / W * H * 0.12 + Math.sin(u * 6.28) * mr * 0.3;
-      if (W < 640) dy = my + (dx - mx) / W * H * 0.05 + Math.sin(u * 6.28) * mr * 0.3;
-      var dw = Math.max(80, Math.min(W, H) * 0.13), fr = Math.floor(t * 7.14) % 20;
-      if (ready(FLY)) {
-        c.save(); c.translate(dx, dy); c.rotate(-0.06 + Math.cos(u * 3.14) * 0.1);
-        c.filter = 'brightness(0.7) saturate(0.85)';
-        c.drawImage(FLY, (fr % 10) * 190, Math.floor(fr / 10) * 166, 190, 166, -dw / 2, -dw * 0.44, dw, dw * 0.874);
-        c.restore();
+    // beasts from the game cross the sky: a different one each time, from either side, at different heights
+    if (!STILL && !flight && age >= nextFlight) flight = newFlight(age);
+    if (flight) {
+      var u = (age - flight.at) / flight.dur;
+      if (u >= 1) { flight = null; nextFlight = age + 7 + Math.random() * 9; }
+      else {
+        var F = FLYERS[flight.k], fx = flight.dir > 0 ? -0.15 * W + u * W * 1.3 : 1.15 * W - u * W * 1.3;
+        var base = flight.band === 'high' ? H * (W < 640 ? 0.17 : 0.13) : flight.band === 'moon' ? my : hz - H * 0.06;
+        var fy = base + (u - 0.5) * flight.climb * H + Math.sin(u * 6.28 + flight.wob) * mr * 0.3;
+        var dw = Math.max(70, Math.min(W, H) * 0.13) * flight.scale * (F.fw / 190);
+        var dh = dw * F.fh / F.fw, fr = Math.floor(t * F.fps) % F.n;
+        if (ready(F.img)) {
+          c.save(); c.translate(fx, fy); c.scale(flight.dir, 1); c.rotate(-flight.climb * 0.6 + Math.sin(u * 6.28 + flight.wob) * 0.05);
+          c.filter = flight.k === 'phoenix' ? 'brightness(0.95)' : 'brightness(' + flight.light + ') saturate(0.85)';
+          c.drawImage(F.img, (fr % F.cols) * F.fw, Math.floor(fr / F.cols) * F.fh, F.fw, F.fh, -dw / 2, -dh / 2, dw, dh);
+          c.restore();
+        }
       }
     }
     c.fillStyle = '#010202';
