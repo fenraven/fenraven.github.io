@@ -3,141 +3,227 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Fenraven Studio is an independent game studio. Our first game, Ashen Dynasty: Dragons &amp; Heirs, is coming to Android.">
 <title>Fenraven Studio</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<meta name="description" content="Fenraven Studio is an independent game studio. Our first game, Ashen Dynasty: Dragons &amp; Heirs, is coming to Android.">
+<meta name="theme-color" content="#040606">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fenraven Studio">
+<meta property="og:title" content="Fenraven Studio">
+<meta property="og:description" content="An independent game studio. Our first game, Ashen Dynasty: Dragons &amp; Heirs, is coming to Android.">
+<meta property="og:url" content="https://fenraven.github.io/">
+<meta property="og:image" content="https://fenraven.github.io/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<link rel="preload" as="image" href="assets/logo.webp">
+<link rel="preload" as="image" href="assets/paint-storm.webp">
 <style>
-/* Layout: a full-bleed fen at dusk with the studio name set low and left, like a title painted on a landscape;
-   below it the page narrows to one left-aligned reading column, broken once by an ember-lit band for the game. */
+/* Layout: the logo hangs over a night fen like a moon of its own; below it one left-aligned reading column,
+   a lit stage for the dragons, and an ember-lit band for the game. Black and gold come from the logo itself. */
 :root {
   color-scheme: dark;
-  --peat: #0f1f1e;        /* page ground: wet peat, green-black */
-  --bog: #183330;         /* raised surfaces */
-  --sedge: #2c4f48;       /* rules, borders */
-  --mist: #c5d2c9;        /* body text */
-  --bone: #efe9d9;        /* headings */
-  --reed: #d2b266;        /* studio accent: dry reed gold */
-  --ember: #e0703a;       /* the game's own colour */
-  --ash: #2a1714;         /* game band ground: banked coals */
-  --ash-rule: #5a2e22;
-  --ash-text: #e6cdbd;
-  --display: "IM Fell English", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --night: #040606;       /* the logo's own black */
+  --char: #0b1012;        /* raised surfaces */
+  --smoke: #1d2427;       /* rules, borders */
+  --silver: #e2dccf;      /* headings: the logo's lettering */
+  --mist: #aab2ae;        /* body text */
+  --gold: #c99449;        /* the ring and stars */
+  --gold-hi: #f2c879;
+  --ember: #e0703a;       /* Ashen Dynasty */
+  --ash: #150b09;
+  --ash-rule: #46241b;
+  --ash-text: #e3cbbb;
+  --display: "Cinzel", "Trajan Pro", "Times New Roman", serif;
+  --accent: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
   --body: "Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --step--1: 0.95rem;
   --step-0: 1.125rem;
-  --step-1: 1.5rem;
-  --step-2: 2.25rem;
-  --step-3: clamp(2.75rem, 7vw, 4.5rem);
-  --step-4: clamp(3.25rem, 11vw, 7.5rem);
+  --step-1: 1.4rem;
+  --step-2: clamp(1.75rem, 4vw, 2.4rem);
+  --step-3: clamp(2.2rem, 6vw, 3.6rem);
 }
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-  background: var(--peat);
+  margin: 0;
+  background: var(--night);
   color: var(--mist);
   font-family: var(--body);
   font-size: var(--step-0);
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
+img { max-width: 100%; display: block; }
 .wrap {
-  max-width: 68rem;
+  max-width: 70rem;
   margin-inline: auto;
   padding-left: max(20px, env(safe-area-inset-left, 0px));
   padding-right: max(20px, env(safe-area-inset-right, 0px));
 }
-h1, h2, h3 { font-family: var(--display); font-weight: 400; color: var(--bone); text-wrap: balance; margin: 0; }
-p { margin: 0; max-width: 34em; }
-a { color: var(--reed); text-underline-offset: 0.2em; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--bone); outline-offset: 3px; }
+h1, h2, h3 { color: var(--silver); text-wrap: balance; margin: 0; font-weight: 600; }
+h2 { font-family: var(--display); font-size: var(--step-2); line-height: 1.15; letter-spacing: 0.02em; }
+h3 { font-family: var(--display); font-size: var(--step-1); line-height: 1.2; letter-spacing: 0.02em; }
+p { margin: 0; max-width: 36em; }
+a { color: var(--gold-hi); text-underline-offset: 0.2em; }
+:focus-visible { outline: 2px solid var(--gold-hi); outline-offset: 3px; }
+.sub { font-family: var(--accent); font-style: italic; font-size: 1.35em; color: var(--gold); line-height: 1.3; }
+
+/* ---------- top bar ---------- */
+.top {
+  position: absolute; inset: 0 0 auto 0; z-index: 3;
+  padding-block: calc(0.9rem + env(safe-area-inset-top, 0px)) 0.9rem;
+}
+.top .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; align-items: center; justify-content: space-between; }
+.mark { display: flex; align-items: center; gap: 0.65rem; color: var(--silver); text-decoration: none; font-family: var(--display); font-weight: 600; letter-spacing: 0.08em; }
+.mark img { width: 2.4rem; height: 2.4rem; border-radius: 50%; }
+.nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
+.nav a { color: var(--silver); text-decoration: none; padding-block: 0.2rem; border-bottom: 1px solid transparent; transition: border-color .2s, color .2s; }
+.nav a:hover { color: var(--gold-hi); border-bottom-color: var(--gold); }
 
 /* ---------- hero ---------- */
-.hero { position: relative; overflow: hidden; background: var(--peat); }
-.hero canvas { display: block; width: 100%; height: clamp(26rem, 78vw, 40rem); }
-.hero-top {
-  position: absolute; inset: 0 0 auto 0;
-  padding-block: 1.25rem;
+.hero { position: relative; overflow: hidden; background: var(--night); min-height: clamp(34rem, 100svh, 56rem); display: grid; }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero-in {
+  position: relative; align-self: center; justify-self: center;
+  display: grid; justify-items: center; gap: 0.75rem; text-align: center;
+  padding-block: 6rem 4rem;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
 }
-.hero-top .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; align-items: center; justify-content: space-between; }
-.mark { display: flex; align-items: center; gap: 0.6rem; font-family: var(--display); font-size: 1.25rem; color: var(--bone); text-decoration: none; }
-.mark svg { width: 1.6rem; height: 1.6rem; flex: none; }
-.nav { display: flex; gap: 1.5rem; }
-.nav a { color: var(--bone); text-decoration: none; border-bottom: 1px solid transparent; }
-.nav a:hover { border-bottom-color: var(--reed); }
-.hero-title {
-  position: absolute; inset: auto 0 0 0;
-  padding-block: 0 clamp(1.5rem, 5vw, 3.5rem);
+.logo { position: relative; width: min(30rem, 82vw); aspect-ratio: 1; max-width: 100%; }
+.logo img { width: 100%; height: 100%; mix-blend-mode: lighten; animation: rise 1.8s cubic-bezier(.2,.7,.2,1) 0.2s both; }
+.logo::after { /* one gold glint across the lettering after it rises */
+  content: ""; position: absolute; inset: 62% 6% 14% 6%; pointer-events: none;
+  background: linear-gradient(100deg, transparent 35%, rgba(255,226,160,.55) 50%, transparent 65%) no-repeat;
+  background-size: 250% 100%; background-position: 130% 0;
+  mix-blend-mode: screen; animation: glint 1.4s ease-in-out 1.7s both;
+  -webkit-mask: radial-gradient(closest-side, #000 70%, transparent);
+          mask: radial-gradient(closest-side, #000 70%, transparent);
 }
-.hero-title h1 { font-size: var(--step-4); line-height: 0.92; letter-spacing: -0.01em; }
-.hero-title h1 span { display: block; font-style: italic; color: var(--reed); font-size: 0.5em; line-height: 1.3; }
-.hero-title p { margin-top: 1rem; color: var(--bone); max-width: 26em; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px) scale(.97); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes glint { from { background-position: 130% 0; opacity: 1; } to { background-position: -30% 0; opacity: 1; } }
+.hero-in p { color: var(--silver); font-size: 1.15rem; max-width: 30em; animation: fadein 1.2s ease 1.2s both; }
+@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+.cue { margin-top: 1.25rem; display: inline-flex; gap: 0.6rem; align-items: center; color: var(--gold); text-decoration: none; font-family: var(--display); letter-spacing: 0.12em; font-size: 0.9rem; animation: fadein 1.2s ease 1.6s both; }
+.cue svg { width: 1rem; height: 1rem; animation: bob 2.4s ease-in-out infinite; }
+@keyframes bob { 50% { transform: translateY(4px); } }
 
 /* ---------- studio ---------- */
-.studio { padding-block: clamp(3rem, 8vw, 6rem); }
-.studio .wrap { display: grid; gap: 2rem 4rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); }
-.studio h2 { font-size: var(--step-2); line-height: 1.15; }
-.studio .say { display: grid; gap: 1.1rem; align-content: start; min-width: 0; }
-.vows { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; align-content: start; min-width: 0; }
-.vows li { padding-block: 1rem; border-top: 1px solid var(--sedge); }
-.vows li:last-child { border-bottom: 1px solid var(--sedge); }
-.vows strong { display: block; font-family: var(--display); font-weight: 400; font-size: var(--step-1); color: var(--bone); line-height: 1.25; }
+.studio { padding-block: clamp(4rem, 9vw, 7rem); }
+.studio .wrap { display: grid; gap: 2.5rem 4.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
+.say { display: grid; gap: 1.1rem; align-content: start; min-width: 0; }
+.vows { list-style: none; margin: 0; padding: 0; display: grid; align-content: start; min-width: 0; }
+.vows li { padding-block: 1.1rem; border-top: 1px solid var(--smoke); display: grid; grid-template-columns: 1.5rem 1fr; gap: 0 0.9rem; }
+.vows li:last-child { border-bottom: 1px solid var(--smoke); }
+.vows svg { width: 1.1rem; height: 1.1rem; margin-top: 0.45rem; fill: var(--gold); }
+.vows strong { display: block; font-family: var(--display); font-weight: 600; font-size: 1.15rem; color: var(--silver); line-height: 1.3; margin-bottom: 0.2rem; letter-spacing: 0.02em; }
+
+/* ---------- dragons ---------- */
+.dragons { padding-block: 0 clamp(4rem, 9vw, 7rem); }
+.dragons-head { display: grid; gap: 0.6rem; margin-bottom: 2rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+.tab {
+  font: 600 0.95rem var(--display); letter-spacing: 0.06em; color: var(--mist); cursor: pointer;
+  background: transparent; border: 1px solid var(--smoke); border-radius: 99px; padding: 0.5rem 1.05rem;
+  display: inline-flex; align-items: center; gap: 0.55rem; transition: color .2s, border-color .2s, background .2s;
+}
+.tab i { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--c); box-shadow: 0 0 10px var(--c); }
+.tab:hover { color: var(--silver); border-color: var(--gold); }
+.tab[aria-selected="true"] { color: var(--night); background: var(--silver); border-color: var(--silver); }
+.stage { display: grid; gap: 0; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); border: 1px solid var(--smoke); background: var(--char); }
+.stage canvas { width: 100%; aspect-ratio: 3 / 2; display: block; background: #020303; max-width: 100%; }
+.lore { padding: clamp(1.5rem, 4vw, 2.75rem); display: grid; gap: 0.9rem; align-content: center; min-width: 0; }
+.lore .sub { font-size: 1.3rem; }
+.lore .fact { border-top: 1px solid var(--smoke); padding-top: 0.9rem; font-size: var(--step--1); color: var(--mist); }
+.lore .fact b { color: var(--silver); font-weight: 500; }
 
 /* ---------- game band ---------- */
-.game { background: var(--ash); color: var(--ash-text); padding-block: clamp(3rem, 8vw, 6rem); border-block: 1px solid var(--ash-rule); }
+.game { position: relative; overflow: hidden; background: var(--ash); color: var(--ash-text); padding-block: clamp(4rem, 9vw, 7rem); border-block: 1px solid var(--ash-rule); }
+.game canvas.embers { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.game .wrap { position: relative; }
 .game a { color: var(--ember); }
 .game-head { display: grid; gap: 1rem; }
-.game-head h2 { font-size: var(--step-3); line-height: 1; }
-.game-head h2 em { display: block; font-size: 0.42em; line-height: 1.5; color: var(--ember); }
-.status { justify-self: start; border: 1px solid var(--ember); color: var(--ember); padding: 0.15rem 0.8rem; border-radius: 99px; font-weight: 500; font-size: 1rem; }
-.game-body { margin-top: 2.5rem; display: grid; gap: 2.5rem 4rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); align-items: start; }
-.feats { margin: 0; display: grid; gap: 1.4rem; min-width: 0; }
-.feats dt { font-family: var(--display); font-size: var(--step-1); color: var(--bone); line-height: 1.25; }
-.feats dd { margin: 0.2rem 0 0; max-width: 32em; }
+.game-head h2 { font-size: var(--step-3); line-height: 1.05; }
+.game-head .sub { color: var(--ember); font-size: 1.6rem; }
+.play {
+  justify-self: start; display: inline-flex; align-items: center; gap: 0.7rem;
+  border: 1px solid var(--ember); color: var(--ash-text); background: rgba(224,112,58,.08);
+  padding: 0.6rem 1.1rem 0.6rem 0.9rem; border-radius: 10px; font-weight: 500;
+}
+.play svg { width: 1.4rem; height: 1.4rem; flex: none; }
+.play small { display: block; font-size: 0.8rem; color: var(--ember); letter-spacing: 0.04em; line-height: 1.2; }
+.play span { line-height: 1.25; }
+.game-body { margin-top: 3rem; display: grid; gap: 2.5rem 4.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr)); align-items: start; }
+.feats { margin: 0; display: grid; gap: 1.5rem; min-width: 0; }
+.feats dt { font-family: var(--display); font-weight: 600; font-size: 1.15rem; color: #f3e3d6; line-height: 1.3; letter-spacing: 0.02em; }
+.feats dd { margin: 0.25rem 0 0; max-width: 34em; }
 
-/* the chronicle: a small playable taste of succession */
-.chron { background: #1d0f0d; border: 1px solid var(--ash-rule); padding: 1.5rem; min-width: 0; display: grid; gap: 1rem; }
-.chron h3 { font-size: var(--step-1); }
-.chron .now { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; font-variant-numeric: tabular-nums; color: var(--bone); }
-.chron .now b { font-weight: 500; color: var(--ember); }
+/* the chronicle */
+.chron { background: rgba(10,4,3,.75); border: 1px solid var(--ash-rule); padding: 1.6rem; min-width: 0; display: grid; gap: 1rem; backdrop-filter: blur(2px); }
+.chron h3 { color: #f3e3d6; }
+.now { display: grid; grid-template-columns: auto 1fr; gap: 0.2rem 1rem; align-items: center; }
+.crownbox { grid-row: span 3; width: 3.6rem; height: 3.6rem; border-radius: 50%; border: 1px solid var(--ash-rule); display: grid; place-items: center; background: radial-gradient(circle, rgba(242,200,121,.18), transparent 70%); }
+.crownbox svg { width: 2rem; height: 2rem; fill: var(--gold-hi); }
+.crownbox.pass svg { animation: crown 1.1s cubic-bezier(.3,.7,.3,1); }
+@keyframes crown { 0% { transform: translateY(0) rotate(0); opacity: 1; } 35% { transform: translateY(-18px) rotate(-12deg); opacity: 0; } 36% { transform: translateY(18px) rotate(10deg); opacity: 0; } 100% { transform: none; opacity: 1; } }
+.crownbox.pass { animation: flare 1.1s ease; }
+@keyframes flare { 40% { box-shadow: 0 0 0 0 rgba(242,200,121,0); } 60% { box-shadow: 0 0 28px 6px rgba(242,200,121,.45); } 100% { box-shadow: 0 0 0 0 rgba(242,200,121,0); } }
+.now span { font-variant-numeric: tabular-nums; color: #f3e3d6; font-size: 1rem; }
+.now b { font-weight: 500; color: var(--ember); }
 .chron ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
-.chron li { display: grid; grid-template-columns: 4.5rem 1fr; gap: 0.75rem; }
+.chron li { display: grid; grid-template-columns: 4.6rem 1fr; gap: 0.75rem; animation: fadein .5s ease; }
 .chron li span:first-child { font-variant-numeric: tabular-nums; color: var(--ember); }
 .chron li span:last-child { min-width: 0; }
-.chron li:not(:first-child) { opacity: 0.62; }
+.chron li:not(:first-child) { opacity: 0.6; animation: none; }
 .chron button {
-  justify-self: start; font: 500 1.05rem var(--body); cursor: pointer;
-  background: var(--ember); color: #1d0f0d; border: 0; padding: 0.65rem 1.3rem; border-radius: 2px;
+  justify-self: start; font: 600 1rem var(--display); letter-spacing: 0.06em; cursor: pointer;
+  background: var(--ember); color: #1a0a06; border: 0; padding: 0.7rem 1.35rem; border-radius: 3px; transition: background .2s, transform .1s;
 }
 .chron button:hover { background: #f08a55; }
-.chron small { font-size: 0.95rem; opacity: 0.75; }
+.chron button:active { transform: translateY(1px); }
+.chron small { font-size: 0.9rem; opacity: 0.75; }
 
 /* ---------- foot ---------- */
-.foot { padding-block: 2.5rem; }
-.foot .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; justify-content: space-between; font-size: 1rem; }
+.foot { padding-block: 3rem calc(3rem + env(safe-area-inset-bottom, 0px)); }
+.foot .wrap { display: flex; flex-wrap: wrap; gap: 1.25rem 2rem; justify-content: space-between; align-items: center; font-size: var(--step--1); }
+.foot .mark img { width: 3rem; height: 3rem; }
 .foot p { max-width: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
 </style>
-<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}</style>
 </head>
 <body>
 
-<header class="hero">
-  <canvas id="fen" role="img" aria-label="A marsh at dusk. Ravens cross a low moon above reeds and still water."></canvas>
-  <div class="hero-top">
-    <div class="wrap">
-      <a class="mark" href="#top">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#efe9d9" d="M3 20 L13 9 L21 7 L29 10 L22 12 L19 18 L24 27 L15 21 L8 22 Z"/><circle cx="19.5" cy="9.8" r="1" fill="#0f1f1e"/></svg>
-        Fenraven
-      </a>
-      <nav class="nav" aria-label="Sections">
-        <a href="#studio">Studio</a>
-        <a href="#ashen-dynasty">Ashen Dynasty</a>
-      </nav>
-    </div>
-  </div>
-  <div class="hero-title" id="top">
-    <div class="wrap">
-      <h1>Fenraven <span>Studio</span></h1>
-      <p>An independent game studio. We build worlds you rule from your phone, and our first one is nearly ready.</p>
-    </div>
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top"><img src="assets/emblem.webp" alt="" width="40" height="40">Fenraven</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#studio">Studio</a>
+      <a href="#dragons">Dragons</a>
+      <a href="#ashen-dynasty">Ashen Dynasty</a>
+    </nav>
   </div>
 </header>
+
+<section class="hero" id="top">
+  <canvas id="fen" aria-hidden="true"></canvas>
+  <div class="hero-in">
+    <h1 class="logo"><img src="assets/logo.webp" alt="Fenraven Studio" width="960" height="960"></h1>
+    <p>An independent game studio. We build worlds you rule from your phone, and our first one is nearly ready.</p>
+    <a class="cue" href="#ashen-dynasty">Meet our first game
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+    </a>
+  </div>
+</section>
 
 <main>
   <section class="studio" id="studio">
@@ -148,24 +234,54 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--bone); outline-
         <p>We are working on one game at a time. Right now that game is <a href="#ashen-dynasty">Ashen Dynasty: Dragons &amp; Heirs</a>.</p>
       </div>
       <ul class="vows">
-        <li><strong>Your save stays with you</strong>The whole kingdom runs on your phone, so you can rule on a train, on a plane or with no signal at all.</li>
-        <li><strong>Free to play, fair to play</strong>Every dragon, rank and realm can be earned by playing. Paying only makes things faster.</li>
-        <li><strong>Built from player feedback</strong>Each release starts with a list of what players told us after the last one.</li>
+        <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0l2 8 8 2-8 2-2 8-2-8-8-2 8-2z"/></svg><div><strong>Your save stays with you</strong>The whole kingdom runs on your phone, so you can rule on a train, on a plane or with no signal at all.</div></li>
+        <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0l2 8 8 2-8 2-2 8-2-8-8-2 8-2z"/></svg><div><strong>Free to play, fair to play</strong>Every dragon, rank and realm can be earned by playing. Paying only makes things faster.</div></li>
+        <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0l2 8 8 2-8 2-2 8-2-8-8-2 8-2z"/></svg><div><strong>Built from player feedback</strong>Each release starts with a list of what players told us after the last one.</div></li>
       </ul>
     </div>
   </section>
 
+  <section class="dragons" id="dragons">
+    <div class="wrap">
+      <div class="dragons-head">
+        <h2>The beasts of Ashvale</h2>
+        <p>Every ruler in Ashen Dynasty starts with one egg, left by their father. What hatches, and what you raise after it, is up to you.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Beasts">
+        <button class="tab" role="tab" id="t-storm" aria-controls="lore" aria-selected="true" style="--c:#5aa0ff" data-k="storm"><i></i>Tempest Drake</button>
+        <button class="tab" role="tab" id="t-obsidian" aria-controls="lore" aria-selected="false" tabindex="-1" style="--c:#a56bff" data-k="obsidian"><i></i>Obsidian Ravager</button>
+        <button class="tab" role="tab" id="t-bone" aria-controls="lore" aria-selected="false" tabindex="-1" style="--c:#62f08a" data-k="bone"><i></i>Gravebone Wyrm</button>
+        <button class="tab" role="tab" id="t-lung" aria-controls="lore" aria-selected="false" tabindex="-1" style="--c:#ff5a3c" data-k="lung"><i></i>Crimson Goldwing</button>
+        <button class="tab" role="tab" id="t-phoenix" aria-controls="lore" aria-selected="false" tabindex="-1" style="--c:#f2c879" data-k="phoenix"><i></i>Phoenix</button>
+      </div>
+      <div class="stage">
+        <canvas id="beast" role="img" aria-label="The Tempest Drake, a blue dragon with lightning running through its wings."></canvas>
+        <div class="lore" id="lore" role="tabpanel" aria-labelledby="t-storm" aria-live="polite">
+          <h3 id="l-name">Tempest Drake</h3>
+          <p class="sub" id="l-epi">Lair: the Thunder Spire</p>
+          <p id="l-text">Lightning runs in its veins and crackles from its jaws when it roars. Raise one from the egg and, once it is grown, it will carry you above the clouds.</p>
+          <p class="fact" id="l-fact"><b>Rideable dragon.</b> Its breath is a bolt of lightning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="game" id="ashen-dynasty">
+    <canvas class="embers" id="embers" aria-hidden="true"></canvas>
     <div class="wrap">
       <div class="game-head">
-        <h2>Ashen Dynasty <em>Dragons &amp; Heirs</em></h2>
-        <span class="status">Coming to Android on Google Play</span>
+        <h2>Ashen Dynasty</h2>
+        <p class="sub">Dragons &amp; Heirs</p>
         <p>Your father has died and left you an estate, a court and one unhatched dragon egg. Build your kingdom, raise dragons and rule through the generations of your house.</p>
+        <div class="play" aria-label="Coming soon on Google Play">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.8v18.4L14.4 12z" fill="#e0703a"/><path d="M14.4 12 4 2.8l13.6 6.3z" fill="#f2c879"/><path d="M14.4 12 4 21.2l13.6-6.3z" fill="#c99449"/><path d="m17.6 9.1-3.2 2.9 3.2 2.9 3.4-1.9c.9-.5.9-1.5 0-2z" fill="#e3cbbb"/></svg>
+          <span><small>Coming soon</small>Android, on Google Play</span>
+        </div>
       </div>
 
       <div class="game-body">
         <dl class="feats">
-          <div><dt>Raise dragons from the egg</dt><dd>Hatch them, name them and grow them to their final form. Storm, obsidian, bone and lung dragons each fight in their own way, and a grown dragon will carry you into the sky.</dd></div>
+          <div><dt>Raise dragons from the egg</dt><dd>Hatch them, name them and grow them to their final form. Each kind fights in its own way, and a grown dragon will carry you into the sky.</dd></div>
           <div><dt>Found a house that outlives you</dt><dd>Marry, raise children and name your heir. When the ruler dies the heir is crowned, with their own traits, and the story carries on.</dd></div>
           <div><dt>Take the realm seat by seat</dt><dd>Six realms and eighty seats of power lie on the map. Raid, besiege, take vassals and rise through seven ranks to Emperor.</dd></div>
           <div><dt>Keep a court</dt><dd>Lady Eva advises you, lords plot, matchmakers call, and you can grant conquered fiefs to your own children and watch them earn their titles.</dd></div>
@@ -174,7 +290,12 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--bone); outline-
 
         <div class="chron">
           <h3>Try a hundred years of it</h3>
-          <div class="now"><span>Ruler <b id="c-ruler">You</b></span><span>Age <b id="c-age">24</b></span><span>Rulers so far <b id="c-gen">1</b></span></div>
+          <div class="now">
+            <div class="crownbox" id="c-crown"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18l1-11-5.5 4L12 4 7.5 11 2 7zM3 20h18v2H3z"/></svg></div>
+            <span>Ruler <b id="c-ruler">You</b></span>
+            <span>Age <b id="c-age">24</b></span>
+            <span>Rulers so far <b id="c-gen">1</b></span>
+          </div>
           <ol id="c-log" aria-live="polite"></ol>
           <button type="button" id="c-go">Let the years pass</button>
           <small>A toy version of succession in the game. Names and fates here are rolled at random.</small>
@@ -186,121 +307,309 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--bone); outline-
 
 <footer class="foot">
   <div class="wrap">
-    <p>&copy; 2026 Fenraven Studio</p>
-    <p>Ashen Dynasty: Dragons &amp; Heirs is a Fenraven game.</p>
+    <a class="mark" href="#top"><img src="assets/emblem.webp" alt="" width="48" height="48">Fenraven Studio</a>
+    <p>&copy; 2026 Fenraven Studio. Ashen Dynasty: Dragons &amp; Heirs is a Fenraven game.<br><small>Phoenix bird model by NORBERTO-3D, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</small></p>
   </div>
 </footer>
 
 <script>
-/* ---------- the fen ---------- */
+var STILL = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var HOVER = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+function rng(seed) { return function () { seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; }; }
+function fit(cv) {
+  var dpr = Math.min(window.devicePixelRatio || 1, 2), w = cv.clientWidth, h = cv.clientHeight;
+  cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+  var c = cv.getContext('2d'); c.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return { c: c, w: w, h: h };
+}
+/* run fn(t) every frame while el is on screen */
+function loop(el, fn) {
+  var on = false, raf = 0;
+  function frame(ms) { fn(ms / 1000); if (on) raf = requestAnimationFrame(frame); }
+  if (STILL) { fn(4); return function () { fn(4); }; }
+  new IntersectionObserver(function (es) {
+    var vis = es[0].isIntersecting;
+    if (vis && !on) { on = true; raf = requestAnimationFrame(frame); }
+    if (!vis) { on = false; cancelAnimationFrame(raf); }
+  }).observe(el);
+  return function () {};
+}
+
+/* ---------- game art ---------- */
+var ART = {};
+['storm', 'obsidian', 'bone', 'lung'].forEach(function (k) { var im = new Image(); im.src = 'assets/paint-' + k + '.webp'; ART[k] = im; });
+var FLY = new Image(); FLY.src = 'assets/fly-storm.webp';       /* 20 frames, 10 x 2, 190 x 166 each */
+var PHX = new Image(); PHX.src = 'assets/fly-phoenix.webp';     /* 8 frames, 206 x 216 each */
+function ready(im) { return im.complete && im.naturalWidth > 0; }
+
+/* ---------- hero: the night fen ---------- */
 (function () {
-  var cv = document.getElementById('fen');
-  var ctx = cv.getContext('2d');
-  var W = 0, H = 0, dpr = 1;
-  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function rng(seed) { return function () { seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; }; }
-
-  var trees = [], reeds = [], ravens = [], mists = [];
+  var cv = document.getElementById('fen'), hero = cv.parentNode, S, born = performance.now() / 1000;
+  var trees, reeds, ravens, mists, flies = [], stars;
   function build() {
-    var r = rng(7);
-    trees = [];
-    for (var i = 0; i <= 80; i++) trees.push(0.35 + r() * 0.65 * (r() > 0.7 ? 1 : 0.45));
-    reeds = [];
-    var n = Math.round(W / 9);
-    for (i = 0; i < n; i++) reeds.push({ x: r() * W, h: 30 + r() * 90, lean: (r() - 0.5) * 0.5, ph: r() * 6.28, head: r() > 0.55 });
-    ravens = [];
-    for (i = 0; i < 9; i++) ravens.push({ x: r() * 1.3 - 0.15, y: 0.12 + r() * 0.3, s: 7 + r() * 11, v: 0.012 + r() * 0.014, ph: r() * 6.28, fl: 5 + r() * 3 });
-    mists = [];
-    for (i = 0; i < 6; i++) mists.push({ x: r(), y: 0.58 + r() * 0.2, w: 0.3 + r() * 0.4, v: (r() - 0.5) * 0.006, a: 0.05 + r() * 0.07 });
+    var r = rng(11), W = S.w, H = S.h, i;
+    trees = []; for (i = 0; i <= 90; i++) trees.push(0.3 + r() * 0.7 * (r() > 0.75 ? 1 : 0.4));
+    reeds = []; var n = Math.round(W / 8);
+    for (i = 0; i < n; i++) reeds.push({ x: r() * W, h: 30 + r() * 110, lean: (r() - 0.5) * 0.5, ph: r() * 6.28, head: r() > 0.55 });
+    ravens = []; for (i = 0; i < 7; i++) ravens.push({ x: r() * 1.3 - 0.15, y: 0.1 + r() * 0.25, s: 6 + r() * 9, v: 0.01 + r() * 0.012, ph: r() * 6.28, fl: 5 + r() * 3 });
+    mists = []; for (i = 0; i < 7; i++) mists.push({ x: r(), y: 0.62 + r() * 0.2, w: 0.3 + r() * 0.45, v: (r() - 0.5) * 0.006, a: 0.05 + r() * 0.06 });
+    stars = []; for (i = 0; i < 120; i++) stars.push({ x: r(), y: r() * 0.55, s: r() * 1.2 + 0.2, ph: r() * 6.28 });
+    flies = []; for (i = 0; i < 18; i++) flies.push({ x: r() * W, y: H * (0.55 + r() * 0.4), vx: 0, vy: 0, ph: r() * 6.28, life: 1e9 });
   }
-
-  function size() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    W = cv.clientWidth; H = cv.clientHeight;
-    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    build();
-  }
-
-  function raven(x, y, s, flap) {
+  function size() { S = fit(cv); build(); }
+  function raven(c, x, y, s, flap) {
     var wy = Math.sin(flap) * s * 0.55;
-    ctx.beginPath();
-    ctx.moveTo(x - s, y - wy);
-    ctx.quadraticCurveTo(x - s * 0.45, y - wy * 0.3 - s * 0.28, x, y);
-    ctx.quadraticCurveTo(x + s * 0.45, y - wy * 0.3 - s * 0.28, x + s, y - wy);
-    ctx.quadraticCurveTo(x + s * 0.4, y - wy * 0.2 + s * 0.05, x + s * 0.12, y + s * 0.2);
-    ctx.lineTo(x - s * 0.3, y + s * 0.16);
-    ctx.quadraticCurveTo(x - s * 0.45, y - wy * 0.2 + s * 0.05, x - s, y - wy);
-    ctx.fill();
+    c.beginPath(); c.moveTo(x - s, y - wy);
+    c.quadraticCurveTo(x - s * 0.45, y - wy * 0.3 - s * 0.28, x, y);
+    c.quadraticCurveTo(x + s * 0.45, y - wy * 0.3 - s * 0.28, x + s, y - wy);
+    c.quadraticCurveTo(x + s * 0.4, y - wy * 0.2 + s * 0.05, x + s * 0.12, y + s * 0.2);
+    c.lineTo(x - s * 0.3, y + s * 0.16);
+    c.quadraticCurveTo(x - s * 0.45, y - wy * 0.2 + s * 0.05, x - s, y - wy); c.fill();
   }
-
+  function star4(c, x, y, r) {
+    c.beginPath(); c.moveTo(x, y - r); c.lineTo(x + r * 0.18, y - r * 0.18); c.lineTo(x + r * 0.6, y); c.lineTo(x + r * 0.18, y + r * 0.18);
+    c.lineTo(x, y + r); c.lineTo(x - r * 0.18, y + r * 0.18); c.lineTo(x - r * 0.6, y); c.lineTo(x - r * 0.18, y - r * 0.18); c.closePath(); c.fill();
+  }
+  var mouse = null;
+  if (HOVER) {
+    hero.addEventListener('pointermove', function (e) { var b = cv.getBoundingClientRect(); mouse = { x: e.clientX - b.left, y: e.clientY - b.top, t: performance.now() }; });
+    hero.addEventListener('pointerleave', function () { mouse = null; });
+  }
   function draw(t) {
-    var hz = H * 0.62; // horizon
+    var c = S.c, W = S.w, H = S.h, sc = Math.min(window.scrollY, H);
+    var age = STILL ? 9 : performance.now() / 1000 - born;
+    var hz = H * 0.68, i;
     // sky
-    var g = ctx.createLinearGradient(0, 0, 0, hz);
-    g.addColorStop(0, '#0f1f1e'); g.addColorStop(0.55, '#1f423d'); g.addColorStop(1, '#6f8a74');
-    ctx.fillStyle = g; ctx.fillRect(0, 0, W, hz);
-    // moon
-    var mx = W * 0.72, my = hz - H * 0.17, mr = Math.max(26, H * 0.075);
-    var halo = ctx.createRadialGradient(mx, my, mr * 0.5, mx, my, mr * 5);
-    halo.addColorStop(0, 'rgba(239,233,217,0.35)'); halo.addColorStop(1, 'rgba(239,233,217,0)');
-    ctx.fillStyle = halo; ctx.fillRect(0, 0, W, hz);
-    ctx.fillStyle = '#efe9d9'; ctx.beginPath(); ctx.arc(mx, my, mr, 0, 6.2832); ctx.fill();
-    // far treeline
-    ctx.fillStyle = '#13292a'; ctx.beginPath(); ctx.moveTo(0, hz);
-    for (var i = 0; i < trees.length; i++) ctx.lineTo(i / (trees.length - 1) * W, hz - trees[i] * H * 0.07);
-    ctx.lineTo(W, hz); ctx.fill();
-    // water
-    g = ctx.createLinearGradient(0, hz, 0, H);
-    g.addColorStop(0, '#4b6a5c'); g.addColorStop(0.35, '#1c3a36'); g.addColorStop(1, '#0f1f1e');
-    ctx.fillStyle = g; ctx.fillRect(0, hz, W, H - hz);
-    // moon path on the water
-    ctx.fillStyle = 'rgba(239,233,217,0.5)';
-    for (i = 0; i < 14; i++) {
-      var yy = hz + 4 + i * i * 0.9 + i * 3;
-      if (yy > H) break;
-      var ww = mr * (0.5 + i * 0.22) * (0.8 + 0.2 * Math.sin(t * 0.9 + i * 1.7));
-      ctx.globalAlpha = 0.5 - i * 0.03;
-      ctx.fillRect(mx - ww / 2 + Math.sin(t * 0.6 + i) * 3, yy, ww, 1.5);
+    c.save(); c.translate(0, sc * 0.35);
+    var g = c.createLinearGradient(0, 0, 0, hz);
+    g.addColorStop(0, '#030505'); g.addColorStop(0.6, '#0a1513'); g.addColorStop(1, '#1d2d29');
+    c.fillStyle = g; c.fillRect(0, -sc, W, hz + sc);
+    for (i = 0; i < stars.length; i++) { var st = stars[i]; c.globalAlpha = 0.25 + 0.35 * (0.5 + 0.5 * Math.sin(t * 1.3 + st.ph)); c.fillStyle = '#e2dccf'; c.fillRect(st.x * W, st.y * hz, st.s, st.s); }
+    c.globalAlpha = 1;
+    // golden crescent moon, like the ring in the logo
+    var mx = W * 0.78, my = hz * 0.34, mr = Math.max(34, Math.min(W, H) * 0.075);
+    if (W < 640) { mx = W * 0.85; my = Math.max(150, hz * 0.27); mr = 24; }
+    var halo = c.createRadialGradient(mx, my, mr * 0.6, mx, my, mr * 6);
+    halo.addColorStop(0, 'rgba(242,200,121,0.22)'); halo.addColorStop(1, 'rgba(242,200,121,0)');
+    c.fillStyle = halo; c.fillRect(mx - mr * 6, my - mr * 6, mr * 12, mr * 12);
+    c.save(); c.beginPath(); c.arc(mx, my, mr, 0, 6.283); c.clip();
+    var mg = c.createLinearGradient(mx - mr, my - mr, mx + mr, my + mr); mg.addColorStop(0, '#f6d48a'); mg.addColorStop(1, '#a8742f');
+    c.fillStyle = mg; c.beginPath(); c.rect(mx - mr, my - mr, mr * 2, mr * 2); c.arc(mx + mr * 0.42, my - mr * 0.18, mr * 0.9, 0, 6.283); c.fill('evenodd');
+    c.restore();
+    c.fillStyle = '#f2c879'; c.globalAlpha = 0.7 + 0.3 * Math.sin(t * 2.1);
+    star4(c, mx - mr * 0.3, my - mr * 1.9, mr * 0.32 * (0.9 + 0.1 * Math.sin(t * 2.1)));
+    c.globalAlpha = 1;
+    // a dragon crosses the moon every 26 seconds, the first time 3 seconds in
+    var cyc = 24, ph = ((age - 3) % cyc + cyc) % cyc;
+    if (age > 3 && ph < 10) {
+      var u = ph / 10, dx = -0.12 * W + u * W * 1.24, dy = my - mr * 1.2 + (dx - mx) / W * H * 0.12 + Math.sin(u * 6.28) * mr * 0.3;
+      if (W < 640) dy = my + (dx - mx) / W * H * 0.05 + Math.sin(u * 6.28) * mr * 0.3;
+      var dw = Math.max(80, Math.min(W, H) * 0.13), fr = Math.floor(t * 7.14) % 20;
+      if (ready(FLY)) {
+        c.save(); c.translate(dx, dy); c.rotate(-0.06 + Math.cos(u * 3.14) * 0.1);
+        c.filter = 'brightness(0.7) saturate(0.85)';
+        c.drawImage(FLY, (fr % 10) * 190, Math.floor(fr / 10) * 166, 190, 166, -dw / 2, -dw * 0.44, dw, dw * 0.874);
+        c.restore();
+      }
     }
-    ctx.globalAlpha = 1;
-    // ravens
-    ctx.fillStyle = '#081211';
-    for (i = 0; i < ravens.length; i++) {
-      var b = ravens[i];
-      var px = ((b.x + t * b.v) % 1.3 + 1.3) % 1.3 - 0.15;
-      raven(px * W, b.y * H + Math.sin(t * 0.5 + b.ph) * 6, b.s, t * b.fl + b.ph);
-    }
-    // mist
+    c.fillStyle = '#010202';
+    for (i = 0; i < ravens.length; i++) { var b = ravens[i]; var px = ((b.x + t * b.v) % 1.3 + 1.3) % 1.3 - 0.15; raven(c, px * W, b.y * H + Math.sin(t * 0.5 + b.ph) * 6, b.s, t * b.fl + b.ph); }
+    c.restore();
+    // treeline and water
+    c.save(); c.translate(0, sc * 0.22);
+    c.fillStyle = '#07100f'; c.beginPath(); c.moveTo(0, hz);
+    for (i = 0; i < trees.length; i++) c.lineTo(i / (trees.length - 1) * W, hz - trees[i] * H * 0.075);
+    c.lineTo(W, hz); c.fill();
+    g = c.createLinearGradient(0, hz, 0, H); g.addColorStop(0, '#1a2925'); g.addColorStop(0.4, '#0a1311'); g.addColorStop(1, '#040606');
+    c.fillStyle = g; c.fillRect(0, hz, W, H - hz + sc);
+    c.fillStyle = '#f2c879';
+    for (i = 0; i < 12; i++) { var yy = hz + 4 + i * i * 1.1 + i * 3; if (yy > H) break; var ww = mr * (0.4 + i * 0.2) * (0.8 + 0.2 * Math.sin(t * 0.9 + i * 1.7)); c.globalAlpha = 0.4 - i * 0.03; c.fillRect(mx - ww / 2 + Math.sin(t * 0.6 + i) * 3, yy, ww, 1.4); }
+    c.globalAlpha = 1;
+    // mist, thick at first, then it parts
+    var thick = STILL ? 1 : 1 + Math.max(0, 3.2 - age) * 1.4;
     for (i = 0; i < mists.length; i++) {
-      var m = mists[i];
-      var cx = (((m.x + t * m.v) % 1.4) + 1.4) % 1.4 - 0.2;
-      var rg = ctx.createRadialGradient(cx * W, m.y * H, 0, cx * W, m.y * H, m.w * W);
-      rg.addColorStop(0, 'rgba(197,210,201,' + m.a + ')'); rg.addColorStop(1, 'rgba(197,210,201,0)');
-      ctx.save(); ctx.translate(0, m.y * H); ctx.scale(1, 0.14); ctx.translate(0, -m.y * H);
-      ctx.fillStyle = rg; ctx.beginPath(); ctx.arc(cx * W, m.y * H, m.w * W, 0, 6.2832); ctx.fill();
-      ctx.restore();
+      var m = mists[i], cx = (((m.x + t * m.v) % 1.4) + 1.4) % 1.4 - 0.2;
+      var rg = c.createRadialGradient(cx * W, m.y * H, 0, cx * W, m.y * H, m.w * W);
+      rg.addColorStop(0, 'rgba(170,178,174,' + Math.min(0.5, m.a * thick) + ')'); rg.addColorStop(1, 'rgba(170,178,174,0)');
+      c.save(); c.translate(0, m.y * H); c.scale(1, 0.15 * (thick > 1 ? 1 + (thick - 1) * 0.8 : 1)); c.translate(0, -m.y * H);
+      c.fillStyle = rg; c.beginPath(); c.arc(cx * W, m.y * H, m.w * W, 0, 6.283); c.fill(); c.restore();
     }
-    // reeds
-    ctx.strokeStyle = '#081211'; ctx.fillStyle = '#081211'; ctx.lineWidth = 1.6; ctx.lineCap = 'round';
+    c.restore();
+    // reeds, nearest layer
+    c.save(); c.translate(0, sc * 0.08);
+    c.strokeStyle = '#010202'; c.fillStyle = '#010202'; c.lineWidth = 1.6; c.lineCap = 'round';
     for (i = 0; i < reeds.length; i++) {
-      var q = reeds[i];
-      var sway = Math.sin(t * 0.8 + q.ph) * 5 + q.lean * q.h;
-      var tx = q.x + sway, ty = H - q.h;
-      ctx.beginPath(); ctx.moveTo(q.x, H); ctx.quadraticCurveTo(q.x + sway * 0.2, H - q.h * 0.55, tx, ty); ctx.stroke();
-      if (q.head) { ctx.beginPath(); ctx.ellipse(tx, ty + 7, 2.4, 8, sway * 0.01, 0, 6.2832); ctx.fill(); }
+      var q = reeds[i], sway = Math.sin(t * 0.8 + q.ph) * 5 + q.lean * q.h, tx = q.x + sway, ty = H - q.h;
+      c.beginPath(); c.moveTo(q.x, H); c.quadraticCurveTo(q.x + sway * 0.2, H - q.h * 0.55, tx, ty); c.stroke();
+      if (q.head) { c.beginPath(); c.ellipse(tx, ty + 7, 2.4, 8, sway * 0.01, 0, 6.283); c.fill(); }
     }
-    // darken the foot so the title reads
-    g = ctx.createLinearGradient(0, H * 0.5, 0, H);
-    g.addColorStop(0, 'rgba(15,31,30,0)'); g.addColorStop(1, 'rgba(15,31,30,0.78)');
-    ctx.fillStyle = g; ctx.fillRect(0, H * 0.5, W, H * 0.5);
+    c.restore();
+    // fireflies; on a computer they gather where the pointer is
+    c.save(); c.globalCompositeOperation = 'lighter';
+    if (mouse && performance.now() - mouse.t < 1500 && flies.length < 60 && Math.random() < 0.35)
+      flies.push({ x: mouse.x, y: mouse.y, vx: (Math.random() - 0.5) * 0.6, vy: -0.2 - Math.random() * 0.5, ph: Math.random() * 6.28, life: 2.5 });
+    for (i = flies.length - 1; i >= 0; i--) {
+      var f = flies[i];
+      f.x += f.vx + Math.sin(t * 0.9 + f.ph) * 0.35; f.y += f.vy * 0.6 + Math.cos(t * 0.7 + f.ph) * 0.25;
+      if (f.life < 1e8) { f.life -= 1 / 60; if (f.life <= 0) { flies.splice(i, 1); continue; } }
+      if (f.x < -10) f.x = W + 10; if (f.x > W + 10) f.x = -10; if (f.y < H * 0.3 && f.life > 1e8) f.y = H * 0.95;
+      var a = (0.35 + 0.65 * Math.max(0, Math.sin(t * 2 + f.ph))) * Math.min(1, f.life);
+      var fg = c.createRadialGradient(f.x, f.y, 0, f.x, f.y, 7); fg.addColorStop(0, 'rgba(242,200,121,' + a + ')'); fg.addColorStop(1, 'rgba(242,200,121,0)');
+      c.fillStyle = fg; c.fillRect(f.x - 7, f.y - 7, 14, 14);
+    }
+    c.restore();
+    // vignette so the logo reads
+    var vg = c.createRadialGradient(W / 2, H * 0.46, Math.min(W, H) * 0.15, W / 2, H * 0.46, Math.max(W, H) * 0.75);
+    vg.addColorStop(0, 'rgba(4,6,6,0.85)'); vg.addColorStop(0.5, 'rgba(4,6,6,0.25)'); vg.addColorStop(1, 'rgba(4,6,6,0.75)');
+    c.fillStyle = vg; c.fillRect(0, 0, W, H);
   }
-
-  function frame(ms) { draw(ms / 1000); if (!still) requestAnimationFrame(frame); }
   size();
-  window.addEventListener('resize', function () { size(); if (still) draw(3); });
-  if (still) draw(3); else requestAnimationFrame(frame);
+  var redraw = loop(hero, draw);
+  window.addEventListener('resize', function () { size(); redraw(); });
+})();
+
+/* ---------- the beasts ---------- */
+(function () {
+  var cv = document.getElementById('beast'), S;
+  var B = {
+    storm: { name: 'Tempest Drake', epi: 'Lair: the Thunder Spire', label: 'The Tempest Drake, a blue dragon with lightning running through its wings.',
+      text: 'Lightning runs in its veins and crackles from its jaws when it roars. Raise one from the egg and, once it is grown, it will carry you above the clouds.',
+      fact: '<b>Rideable dragon.</b> Its breath is a bolt of lightning.' },
+    obsidian: { name: 'Obsidian Ravager', epi: 'Lair: the Obsidian Caldera', label: 'The Obsidian Ravager, a black dragon armoured in violet crystal.',
+      text: 'Armoured in volcanic glass, with violet crystal spikes along its spine and tail. It is born in the fire under the mountain and very hard to wound.',
+      fact: '<b>Rideable dragon.</b> One of the eggs a Founder can choose.' },
+    bone: { name: 'Gravebone Wyrm', epi: 'Lair: the Wyrm Barrow', label: 'The Gravebone Wyrm, a skeletal dragon with green fire in its ribs and eyes.',
+      text: 'A dragon that would not stay dead. Its bare bones are bound together by green soul-fire that burns in its ribs and eyes.',
+      fact: '<b>Rideable dragon.</b> One of the eggs a Founder can choose.' },
+    lung: { name: 'Crimson Goldwing', epi: 'Lair: the Cloud Shrine', label: 'The Crimson Goldwing, a red dragon with golden wings and horns.',
+      text: 'A crimson drake with wings of beaten gold, kept by the priests of the Cloud Shrine. Its fire burns bright as the sun.',
+      fact: '<b>Rideable dragon.</b> One of the eggs a Founder can choose.' },
+    phoenix: { name: 'Aurelion, the Undying Phoenix', epi: 'Chooses its own roost', label: 'Aurelion the phoenix in flight, its feathers burning gold and red.',
+      text: 'The rarest beast in the realm. It cannot be hunted, tamed or ridden: it comes only to a just ruler and leaves a tyrant. Once in each generation, a fallen ruler or heir of its house rises again from the phoenix fire.',
+      fact: '<b>Legendary.</b> Its tears heal the wounded, and where it nests winter cannot stop the harvest.' }
+  };
+  var THEME = {
+    storm:    { a: '#14254a', b: '#02040a', glow: 'rgba(90,160,255,', mote: [150, 200, 255] },
+    obsidian: { a: '#2a1446', b: '#050209', glow: 'rgba(165,107,255,', mote: [190, 140, 255] },
+    bone:     { a: '#13301d', b: '#030605', glow: 'rgba(98,240,138,', mote: [120, 255, 150] },
+    lung:     { a: '#47160c', b: '#070201', glow: 'rgba(255,170,70,', mote: [255, 190, 90] },
+    phoenix:  { a: '#47300c', b: '#060301', glow: 'rgba(255,200,110,', mote: [255, 190, 90] }
+  };
+  var cur = 'storm', since = 0, parts = [], bolt = null, nextBolt = 1.2;
+  function size() { S = fit(cv); }
+  function set(k) {
+    cur = k; since = performance.now() / 1000; parts = []; bolt = null; nextBolt = 1.2;
+    var d = B[k];
+    document.getElementById('l-name').textContent = d.name;
+    document.getElementById('l-epi').textContent = d.epi;
+    document.getElementById('l-text').textContent = d.text;
+    document.getElementById('l-fact').innerHTML = d.fact;
+    cv.setAttribute('aria-label', d.label);
+    document.querySelectorAll('.tab').forEach(function (b) {
+      var on = b.dataset.k === k; b.setAttribute('aria-selected', on); b.tabIndex = on ? 0 : -1;
+      if (on) document.getElementById('lore').setAttribute('aria-labelledby', b.id);
+    });
+    if (STILL) draw(4);
+  }
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  tabs.forEach(function (b, i) {
+    b.addEventListener('click', function () { set(b.dataset.k); });
+    b.addEventListener('keydown', function (e) {
+      var j = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : null;
+      if (j === null) return; e.preventDefault(); j = (j + tabs.length) % tabs.length; tabs[j].focus(); set(tabs[j].dataset.k);
+    });
+  });
+  function draw(t) {
+    var c = S.c, W = S.w, H = S.h, k = cur, th = THEME[k], age = STILL ? 3 : performance.now() / 1000 - since;
+    var fade = Math.min(1, age / 0.5), i, p;
+    c.clearRect(0, 0, W, H);
+    var g = c.createRadialGradient(W * 0.5, H * 0.45, 10, W * 0.5, H * 0.5, Math.max(W, H) * 0.75);
+    g.addColorStop(0, th.a); g.addColorStop(1, th.b); c.fillStyle = g; c.fillRect(0, 0, W, H);
+    // pulsing glow behind the beast
+    var pulse = 0.5 + 0.5 * Math.sin(t * 2);
+    var gl = c.createRadialGradient(W * 0.5, H * 0.5, 0, W * 0.5, H * 0.5, Math.min(W, H) * 0.6);
+    gl.addColorStop(0, th.glow + (0.18 + pulse * 0.12) + ')'); gl.addColorStop(1, th.glow + '0)');
+    c.fillStyle = gl; c.fillRect(0, 0, W, H);
+    // lightning for the storm drake
+    var flash = 0;
+    if (k === 'storm') {
+      if (!STILL && age > nextBolt) {
+        nextBolt = age + 1.8 + Math.random() * 2.4;
+        var bx = W * (0.1 + Math.random() * 0.8), pts = [[bx, 0]];
+        while (pts[pts.length - 1][1] < H * (0.5 + Math.random() * 0.5)) { var lp = pts[pts.length - 1]; pts.push([lp[0] + (Math.random() - 0.5) * W * 0.09, lp[1] + H * (0.05 + Math.random() * 0.07)]); }
+        bolt = { pts: pts, at: age };
+      }
+      flash = bolt ? Math.max(0, 1 - (age - bolt.at) / 0.35) : 0;
+      if (flash > 0) {
+        c.fillStyle = 'rgba(150,190,255,' + flash * 0.22 + ')'; c.fillRect(0, 0, W, H);
+        c.strokeStyle = 'rgba(225,238,255,' + flash + ')'; c.lineWidth = 2; c.shadowColor = '#7fb0ff'; c.shadowBlur = 18;
+        c.beginPath(); bolt.pts.forEach(function (q, j) { j ? c.lineTo(q[0], q[1]) : c.moveTo(q[0], q[1]); }); c.stroke(); c.shadowBlur = 0;
+      }
+    }
+    // drifting motes in the beast's own colour
+    if (!STILL && Math.random() < 0.45) parts.push({ x: Math.random() * W, y: H + 4, vx: (Math.random() - 0.5) * 0.4, vy: -0.4 - Math.random() * 0.9, r: 0.8 + Math.random() * 2, l: 1 });
+    c.save(); c.globalCompositeOperation = 'lighter';
+    for (i = parts.length - 1; i >= 0; i--) {
+      p = parts[i]; p.x += p.vx + Math.sin(t * 2 + i) * 0.25; p.y += p.vy; p.l -= 0.004;
+      if (p.l <= 0 || p.y < -5) { parts.splice(i, 1); continue; }
+      c.fillStyle = 'rgba(' + th.mote[0] + ',' + th.mote[1] + ',' + th.mote[2] + ',' + p.l * 0.8 + ')';
+      c.beginPath(); c.arc(p.x, p.y, p.r, 0, 6.283); c.fill();
+    }
+    c.restore();
+    // the beast itself
+    c.save(); c.globalAlpha = fade;
+    if (k === 'phoenix') {
+      if (ready(PHX)) {
+        var fr = Math.floor(t * 9.61) % 8, pw = Math.min(W * 0.72, H * 0.86 * 206 / 200), ph = pw * 200 / 206;
+        c.translate(W / 2, H / 2 + Math.sin(t * 1.4) * H * 0.03);
+        c.shadowColor = 'rgba(255,190,90,0.7)'; c.shadowBlur = 30;
+        c.drawImage(PHX, fr * 206, 0, 206, 200, -pw / 2, -ph / 2, pw, ph);
+      }
+    } else {
+      var im = ART[k];
+      if (ready(im)) {
+        var breathe = 1 + Math.sin(t * 1.6) * 0.012, iw = Math.min(W * 0.94, H * 0.9 * im.naturalWidth / im.naturalHeight) * breathe, ih = iw * im.naturalHeight / im.naturalWidth;
+        c.translate(W / 2, H / 2 + Math.sin(t * 1.1) * H * 0.012);
+        c.shadowColor = th.glow + '0.55)'; c.shadowBlur = 26;
+        c.drawImage(im, -iw / 2, -ih / 2, iw, ih);
+        if (flash > 0) { c.shadowBlur = 0; c.globalCompositeOperation = 'lighter'; c.globalAlpha = flash * 0.35; c.drawImage(im, -iw / 2, -ih / 2, iw, ih); }
+      }
+    }
+    c.restore();
+  }
+  size();
+  var redraw = loop(cv, draw);
+  [ART.storm, ART.obsidian, ART.bone, ART.lung, PHX].forEach(function (im) { im.addEventListener('load', function () { if (STILL) redraw(); }); });
+  window.addEventListener('resize', function () { size(); redraw(); });
+})();
+
+/* ---------- embers behind the game ---------- */
+(function () {
+  var cv = document.getElementById('embers'), band = cv.parentNode, S, sparks = [];
+  function size() { S = fit(cv); }
+  function draw(t) {
+    var c = S.c, W = S.w, H = S.h;
+    c.clearRect(0, 0, W, H);
+    var glow = c.createRadialGradient(W * 0.75, H * 1.05, 0, W * 0.75, H * 1.05, Math.max(W, H) * 0.7);
+    glow.addColorStop(0, 'rgba(224,112,58,' + (0.22 + 0.04 * Math.sin(t * 1.3)) + ')'); glow.addColorStop(1, 'rgba(224,112,58,0)');
+    c.fillStyle = glow; c.fillRect(0, 0, W, H);
+    if (STILL) return;
+    var want = Math.min(70, W / 18);
+    while (sparks.length < want) sparks.push({ x: Math.random() * W, y: H + Math.random() * H * 0.5, vy: 0.3 + Math.random() * 0.8, r: 0.6 + Math.random() * 1.8, ph: Math.random() * 6.28, l: 0.4 + Math.random() * 0.6 });
+    c.save(); c.globalCompositeOperation = 'lighter';
+    for (var i = 0; i < sparks.length; i++) {
+      var s = sparks[i];
+      s.y -= s.vy; s.x += Math.sin(t * 1.1 + s.ph) * 0.4;
+      if (s.y < -10) { s.y = H + 10; s.x = Math.random() * W; }
+      var a = s.l * Math.min(1, (H - s.y) / (H * 0.2) + 0.2) * Math.min(1, s.y / (H * 0.4)) * (0.6 + 0.4 * Math.sin(t * 3 + s.ph));
+      c.fillStyle = 'rgba(255,' + (120 + (s.ph * 20 | 0)) + ',50,' + Math.max(0, a) + ')';
+      c.beginPath(); c.arc(s.x, s.y, s.r, 0, 6.283); c.fill();
+    }
+    c.restore();
+  }
+  size();
+  var redraw = loop(band, draw);
+  window.addEventListener('resize', function () { size(); redraw(); });
 })();
 
 /* ---------- the chronicle ---------- */
@@ -309,15 +618,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--bone); outline-
   var traits = ['the Builder', 'the Steward', 'the Warrior', 'the Strategist', 'the Pious', 'the Charmer', 'the Diplomat', 'the Farmer'];
   function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
   function fate() { return 52 + Math.floor(Math.random() * 26); }
-
-  var year = 1, gen = 1;
-  var ruler = { name: 'You', age: 24, fate: fate() };
-  var heir = null;
+  var year = 1, gen = 1, ruler = { name: 'You', age: 24, fate: fate() }, heir = null;
   var log = [['Year 1', 'Your father dies aged 61. You are crowned, and inherit his dragon egg.']];
-
-  var elR = document.getElementById('c-ruler'), elA = document.getElementById('c-age'),
-      elG = document.getElementById('c-gen'), elL = document.getElementById('c-log');
-
+  var elR = document.getElementById('c-ruler'), elA = document.getElementById('c-age'), elG = document.getElementById('c-gen'),
+      elL = document.getElementById('c-log'), crown = document.getElementById('c-crown');
   function show() {
     elR.textContent = ruler.name; elA.textContent = ruler.age; elG.textContent = gen;
     elL.textContent = '';
@@ -326,11 +630,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--bone); outline-
       a.textContent = e[0]; b.textContent = e[1]; li.appendChild(a); li.appendChild(b); elL.appendChild(li);
     });
   }
-
   document.getElementById('c-go').addEventListener('click', function () {
     var yrs = 5 + Math.floor(Math.random() * 8);
-    year += yrs; ruler.age += yrs;
-    if (heir) heir.age += yrs;
+    year += yrs; ruler.age += yrs; if (heir) heir.age += yrs;
     var stamp = 'Year ' + year;
     if (!heir) {
       heir = { name: pick(names), age: Math.floor(Math.random() * yrs), trait: pick(traits) };
@@ -340,6 +642,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--bone); outline-
       log.unshift([stamp, who + ' aged ' + ruler.age + '. ' + heir.name + ' ' + heir.trait + ' is crowned.']);
       ruler = { name: heir.name, age: heir.age, fate: Math.max(heir.age + 12, fate()) };
       heir = null; gen += 1;
+      crown.classList.remove('pass'); void crown.offsetWidth; crown.classList.add('pass');
     } else if (heir.age >= 16 && !heir.grown) {
       heir.grown = true;
       log.unshift([stamp, heir.name + ' comes of age and is known as ' + heir.trait + '.']);
@@ -351,6 +654,5 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--bone); outline-
   show();
 })();
 </script>
-
 </body>
 </html>
