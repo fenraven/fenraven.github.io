@@ -23,6 +23,21 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Alegreya+Sans:wght@400;500;700&display=swap">
 <link rel="preload" as="image" href="assets/logo.webp">
 <link rel="preload" as="image" href="assets/paint-storm.webp">
+<script>
+/* Google Analytics. Cookies wait for consent in Europe and the UK; elsewhere they are on until the visitor declines. */
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+var GA_CHOICE = null;
+try { GA_CHOICE = localStorage.getItem('fen-analytics'); } catch (e) {}
+gtag('consent', 'default', { analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+  region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'] });
+if (GA_CHOICE) gtag('consent', 'update', { analytics_storage: GA_CHOICE === 'yes' ? 'granted' : 'denied' });
+gtag('js', new Date());
+gtag('config', 'G-F44F0BBJ8K');
+function track(name, params) { try { gtag('event', name, params || {}); } catch (e) {} }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F44F0BBJ8K"></script>
 <style>
 /* Layout: the logo hangs over a night fen like a moon of its own; below it one left-aligned reading column,
    a lit stage for the dragons, and an ember-lit band for the game. Black and gold come from the logo itself. */
@@ -195,6 +210,22 @@ a { color: var(--gold-hi); text-underline-offset: 0.2em; }
 .foot .mark img { width: 3rem; height: 3rem; }
 .foot p { max-width: none; }
 .foot .founder { font-family: var(--display); color: var(--silver); letter-spacing: 0.04em; }
+.foot details { flex-basis: 100%; border-top: 1px solid var(--smoke); padding-top: 1rem; }
+.foot summary { cursor: pointer; color: var(--silver); width: fit-content; }
+.foot details p { margin-top: 0.6rem; max-width: 46em; }
+.notice {
+  position: fixed; z-index: 20; left: 0; right: 0; bottom: 0;
+  padding-block: 0.9rem calc(0.9rem + env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  background: rgba(11,16,18,.96); border-top: 1px solid var(--smoke); backdrop-filter: blur(6px);
+}
+.notice .in { max-width: 70rem; margin-inline: auto; display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center; justify-content: space-between; font-size: var(--step--1); }
+.notice p { max-width: 44em; }
+.notice .btns { display: flex; gap: 0.6rem; }
+.notice button { font: 600 0.95rem var(--body); cursor: pointer; border-radius: 3px; padding: 0.5rem 1.1rem; border: 1px solid var(--gold); }
+.notice .yes { background: var(--gold); color: var(--night); }
+.notice .no { background: transparent; color: var(--silver); border-color: var(--smoke); }
+.linkish { font: inherit; color: var(--gold-hi); background: none; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 0.2em; cursor: pointer; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -310,8 +341,20 @@ a { color: var(--gold-hi); text-underline-offset: 0.2em; }
   <div class="wrap">
     <a class="mark" href="#top"><img src="assets/emblem.webp" alt="" width="48" height="48">Fenraven Studio</a>
     <p><span class="founder">Founded by Imrul Kayes Emon</span><br>&copy; 2026 Fenraven Studio. Ashen Dynasty: Dragons &amp; Heirs is a Fenraven game.<br><small>Phoenix bird model by NORBERTO-3D, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</small></p>
+    <details id="privacy">
+      <summary>Privacy</summary>
+      <p>This site uses Google Analytics to count visits and see which parts of the page people use, such as which beast they look at. Google Analytics uses cookies and receives your approximate location, device type and the pages you view. It does not tell us who you are, and we do not sell or share this data. The site has no accounts and stores nothing else about you.</p>
+      <p>You can change your choice at any time: <button type="button" id="ga-reset" class="linkish">show the cookie choice again</button>.</p>
+    </details>
   </div>
 </footer>
+
+<div class="notice" id="notice" hidden role="region" aria-label="Cookie choice">
+  <div class="in">
+    <p>We use Google Analytics cookies to count visits and see which parts of the site people enjoy. <a href="#privacy">More about privacy</a></p>
+    <div class="btns"><button type="button" class="no" id="ga-no">Decline</button><button type="button" class="yes" id="ga-yes">Accept</button></div>
+  </div>
+</div>
 
 <script>
 var STILL = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -681,6 +724,25 @@ function ready(im) { return im.complete && im.naturalWidth > 0; }
     show();
   });
   show();
+})();
+
+/* ---------- cookie choice and events ---------- */
+(function () {
+  var box = document.getElementById('notice');
+  function choose(v) {
+    try { localStorage.setItem('fen-analytics', v); } catch (e) {}
+    gtag('consent', 'update', { analytics_storage: v === 'yes' ? 'granted' : 'denied' });
+    box.hidden = true;
+  }
+  if (!GA_CHOICE) box.hidden = false;
+  document.getElementById('ga-yes').addEventListener('click', function () { choose('yes'); });
+  document.getElementById('ga-no').addEventListener('click', function () { choose('no'); });
+  document.getElementById('ga-reset').addEventListener('click', function () { box.hidden = false; });
+  document.querySelectorAll('a[href="#privacy"]').forEach(function (l) { l.addEventListener('click', function () { document.getElementById('privacy').open = true; }); });
+  document.querySelectorAll('.tab').forEach(function (b) { b.addEventListener('click', function () { track('view_beast', { beast: b.dataset.k }); }); });
+  var years = 0;
+  document.getElementById('c-go').addEventListener('click', function () { years++; if (years === 1 || years % 5 === 0) track('let_years_pass', { presses: years }); });
+  document.querySelectorAll('.nav a, .cue').forEach(function (a) { a.addEventListener('click', function () { track('nav_click', { target: a.getAttribute('href') }); }); });
 })();
 </script>
 </body>
