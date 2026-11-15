@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Alegreya+Sans:wght@400;500;700&display=swap">
 <link rel="preload" as="image" href="assets/logo.webp">
-<link rel="preload" as="image" href="assets/paint-storm.webp">
+<link rel="preload" as="image" href="assets/elder-storm.webp">
 <script>
 /* Google Analytics. Cookies wait for consent in Europe and the UK; elsewhere they are on until the visitor declines. */
 window.dataLayer = window.dataLayer || [];
@@ -166,6 +166,7 @@ a { color: var(--gold-hi); text-underline-offset: 0.2em; }
 .game-head { display: grid; gap: 1rem; }
 .game-head h2 { font-size: var(--step-3); line-height: 1.05; }
 .game-head .sub { color: var(--ember); font-size: 1.6rem; }
+.game-head .hook { font-family: var(--accent); font-style: italic; font-size: 1.5rem; line-height: 1.35; color: #f3e3d6; max-width: 30em; }
 .play {
   justify-self: start; display: inline-flex; align-items: center; gap: 0.7rem;
   border: 1px solid var(--ember); color: var(--ash-text); background: rgba(224,112,58,.08);
@@ -250,7 +251,7 @@ a { color: var(--gold-hi); text-underline-offset: 0.2em; }
   <canvas id="fen" aria-hidden="true"></canvas>
   <div class="hero-in">
     <h1 class="logo"><img src="assets/logo.webp" alt="Fenraven Studio" width="960" height="960"></h1>
-    <p>An independent game studio. We build worlds you rule from your phone, and our first one is nearly ready.</p>
+    <p>An independent game studio. We build worlds you rule from your phone. Our first, a kingdom of dragons and heirs, is nearly ready.</p>
     <a class="cue" href="#ashen-dynasty">Meet our first game
       <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
     </a>
@@ -276,23 +277,26 @@ a { color: var(--gold-hi); text-underline-offset: 0.2em; }
   <section class="dragons" id="dragons">
     <div class="wrap">
       <div class="dragons-head">
-        <h2>The beasts of Ashvale</h2>
-        <p>Every ruler in Ashen Dynasty starts with one egg, left by their father. What hatches, and what you raise after it, is up to you.</p>
+        <h2>Seven dragons. One egg.</h2>
+        <p>Every ruler starts with the egg their father left behind. Raise it through every stage and it becomes an elder: wreathed in its own element, eyes burning, breath ready for war. These are the elders, flying exactly as they do in the game.</p>
       </div>
-      <div class="tabs" role="tablist" aria-label="Beasts">
+      <div class="tabs" role="tablist" aria-label="Dragons">
         <button class="tab" role="tab" id="t-storm" aria-controls="lore" aria-selected="true" style="--c:#5aa0ff" data-k="storm"><i></i>Tempest Drake</button>
-        <button class="tab" role="tab" id="t-obsidian" aria-controls="lore" aria-selected="false" tabindex="-1" style="--c:#a56bff" data-k="obsidian"><i></i>Obsidian Ravager</button>
-        <button class="tab" role="tab" id="t-bone" aria-controls="lore" aria-selected="false" tabindex="-1" style="--c:#62f08a" data-k="bone"><i></i>Gravebone Wyrm</button>
-        <button class="tab" role="tab" id="t-lung" aria-controls="lore" aria-selected="false" tabindex="-1" style="--c:#ff5a3c" data-k="lung"><i></i>Crimson Goldwing</button>
+        <button class="tab" role="tab" id="t-ember" aria-controls="lore" aria-selected="false" tabindex="-1" style="--c:#ff7a1a" data-k="ember"><i></i>Emberwing Drake</button>
+        <button class="tab" role="tab" id="t-obsidian" aria-controls="lore" aria-selected="false" tabindex="-1" style="--c:#b046ff" data-k="obsidian"><i></i>Obsidian Ravager</button>
+        <button class="tab" role="tab" id="t-bone" aria-controls="lore" aria-selected="false" tabindex="-1" style="--c:#46e65a" data-k="bone"><i></i>Gravebone Wyrm</button>
+        <button class="tab" role="tab" id="t-lung" aria-controls="lore" aria-selected="false" tabindex="-1" style="--c:#50e2ce" data-k="lung"><i></i>Crimson Goldwing</button>
+        <button class="tab" role="tab" id="t-king" aria-controls="lore" aria-selected="false" tabindex="-1" style="--c:#ffc428" data-k="king"><i></i>The Dragon King</button>
+        <button class="tab" role="tab" id="t-ancient" aria-controls="lore" aria-selected="false" tabindex="-1" style="--c:#e8161e" data-k="ancient"><i></i>Ancient Bloodwyrm</button>
         <button class="tab" role="tab" id="t-phoenix" aria-controls="lore" aria-selected="false" tabindex="-1" style="--c:#f2c879" data-k="phoenix"><i></i>Phoenix</button>
       </div>
       <div class="stage">
-        <canvas id="beast" role="img" aria-label="The Tempest Drake, a blue dragon with lightning running through its wings."></canvas>
+        <canvas id="beast" role="img" aria-label="The elder Tempest Drake in flight, wreathed in blue lightning."></canvas>
         <div class="lore" id="lore" role="tabpanel" aria-labelledby="t-storm" aria-live="polite">
           <h3 id="l-name">Tempest Drake</h3>
           <p class="sub" id="l-epi">Lair: the Thunder Spire</p>
-          <p id="l-text">Lightning runs in its veins and crackles from its jaws when it roars. Raise one from the egg and, once it is grown, it will carry you above the clouds.</p>
-          <p class="fact" id="l-fact"><b>Rideable dragon.</b> Its breath is a bolt of lightning.</p>
+          <p id="l-text">Lightning runs in its veins and crackles from its jaws when it roars. As an elder it flies inside its own storm, and its breath is a living bolt.</p>
+          <p class="fact" id="l-fact"><b>Elder aura:</b> blue lightning. Grown, it carries its rider above the clouds.</p>
         </div>
       </div>
     </div>
@@ -304,7 +308,8 @@ a { color: var(--gold-hi); text-underline-offset: 0.2em; }
       <div class="game-head">
         <h2>Ashen Dynasty</h2>
         <p class="sub">Dragons &amp; Heirs</p>
-        <p>Your father has died and left you an estate, a court and one unhatched dragon egg. Build your kingdom, raise dragons and rule through the generations of your house.</p>
+        <p class="hook">Your father is dead. His estate, his enemies and his last dragon egg are now yours.</p>
+        <p>Hatch the egg, raise a dragon that will one day blot out the sun, and build a house that rules long after you are gone. Every choice you make is inherited by your children, and theirs.</p>
         <div class="play" aria-label="Coming soon on Google Play">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.8v18.4L14.4 12z" fill="#e0703a"/><path d="M14.4 12 4 2.8l13.6 6.3z" fill="#f2c879"/><path d="M14.4 12 4 21.2l13.6-6.3z" fill="#c99449"/><path d="m17.6 9.1-3.2 2.9 3.2 2.9 3.4-1.9c.9-.5.9-1.5 0-2z" fill="#e3cbbb"/></svg>
           <span><small>Coming soon</small>Android, on Google Play</span>
@@ -313,11 +318,13 @@ a { color: var(--gold-hi); text-underline-offset: 0.2em; }
 
       <div class="game-body">
         <dl class="feats">
-          <div><dt>Raise dragons from the egg</dt><dd>Hatch them, name them and grow them to their final form. Each kind fights in its own way, and a grown dragon will carry you into the sky.</dd></div>
-          <div><dt>Found a house that outlives you</dt><dd>Marry, raise children and name your heir. When the ruler dies the heir is crowned, with their own traits, and the story carries on.</dd></div>
-          <div><dt>Take the realm seat by seat</dt><dd>Six realms and eighty seats of power lie on the map. Raid, besiege, take vassals and rise through seven ranks to Emperor.</dd></div>
-          <div><dt>Keep a court</dt><dd>Lady Eva advises you, lords plot, matchmakers call, and you can grant conquered fiefs to your own children and watch them earn their titles.</dd></div>
-          <div><dt>Something new each week</dt><dd>Thirty-day seasons and weekend events such as the Dragon Moon and the Grand Tourney bring fresh rewards.</dd></div>
+          <div><dt>Raise a legend from the egg</dt><dd>Hatch it, name it and feed it through every stage until it becomes an elder, wreathed in fire, lightning or soul-flame. Seven dragons to raise, and a phoenix that chooses only worthy rulers.</dd></div>
+          <div><dt>Fly your dragon yourself</dt><dd>Climb on a grown dragon and take to the sky in first person. Soar over your lands, then dive and breathe fire on the armies below.</dd></div>
+          <div><dt>A dynasty that outlives you</dt><dd>Marry, raise children and choose your heir. Years pass, rulers grow old and die, and the crown passes on with new strengths and flaws. Paint your own face onto your ruler's portrait.</dd></div>
+          <div><dt>Conquer a world, seat by seat</dt><dd>Six realms and eighty seats of power. Raid, lay siege to castles, bend lords into vassals and hand conquered lands to your children. Rise through seven ranks from landholder to Emperor.</dd></div>
+          <div><dt>A court full of schemes</dt><dd>Lady Eva guides your first steps while rival lords plot, matchmakers come calling, and shady towns hide black markets and slaver pens.</dd></div>
+          <div><dt>Always something new</dt><dd>Thirty-day seasons, weekend events like the Dragon Moon and the Grand Tourney, and the Hall of Houses, where your dynasty is ranked against the realm's mightiest.</dd></div>
+          <div><dt>Rule anywhere</dt><dd>Your kingdom lives on your phone. Play on the bus, on a plane or with no signal at all.</dd></div>
         </dl>
 
         <div class="chron">
@@ -380,17 +387,17 @@ function loop(el, fn) {
 }
 
 /* ---------- game art ---------- */
+/* elder flight sheets from the game: 20 frames, 8 columns, 460 px wide frames with room for the aura */
+var ELDERS = { storm: 412, ember: 432, obsidian: 420, bone: 410, lung: 440, king: 428, ancient: 426 };
 var ART = {};
-['storm', 'obsidian', 'bone', 'lung'].forEach(function (k) { var im = new Image(); im.src = 'assets/paint-' + k + '.webp'; ART[k] = im; });
+function elderArt(k) {   /* full-size sheet for the showcase, loaded when first shown */
+  if (!ART[k]) { var im = new Image(); im.src = 'assets/elder-' + k + '.webp'; ART[k] = im; }
+  return ART[k];
+}
 /* flight sprite sheets from the game: frame size, frame count, columns, frames per second */
-var FLYERS = {
-  storm:    { fw: 190, fh: 166, n: 20, cols: 10, fps: 7.14 },
-  obsidian: { fw: 190, fh: 170, n: 20, cols: 10, fps: 7.14 },
-  bone:     { fw: 190, fh: 165, n: 20, cols: 10, fps: 7.14 },
-  lung:     { fw: 190, fh: 180, n: 20, cols: 10, fps: 7.14 },
-  phoenix:  { fw: 206, fh: 216, n: 8, cols: 8, fps: 9.61 }
-};
-Object.keys(FLYERS).forEach(function (k) { var im = new Image(); im.src = 'assets/fly-' + k + '.webp'; FLYERS[k].img = im; });
+var FLYERS = { phoenix: { fw: 206, fh: 216, n: 8, cols: 8, fps: 9.61, src: 'assets/fly-phoenix.webp' } };
+Object.keys(ELDERS).forEach(function (k) { FLYERS[k] = { fw: 230, fh: ELDERS[k] / 2, n: 20, cols: 8, fps: 7.14, src: 'assets/fly-elder-' + k + '.webp' }; });
+Object.keys(FLYERS).forEach(function (k) { var im = new Image(); im.src = FLYERS[k].src; FLYERS[k].img = im; });
 var PHX = FLYERS.phoenix.img;
 function ready(im) { return im.complete && im.naturalWidth > 0; }
 
@@ -401,8 +408,8 @@ function ready(im) { return im.complete && im.naturalWidth > 0; }
   var flight = null, nextFlight = 3, passes = 0, lastDir = Math.random() < 0.5 ? 1 : -1, queue = [];
   function newFlight(age) {
     if (!queue.length) {   // each dragon once, in a shuffled order, before any repeats
-      queue = ['storm', 'obsidian', 'bone', 'lung'].sort(function () { return Math.random() - 0.5; });
-      if (passes > 0) queue.splice(1 + Math.floor(Math.random() * 3), 0, 'phoenix');
+      queue = Object.keys(ELDERS).sort(function () { return Math.random() - 0.5; });
+      if (passes > 0) queue.splice(1 + Math.floor(Math.random() * 5), 0, 'phoenix');
     }
     passes++;
     lastDir = Math.random() < 0.7 ? -lastDir : lastDir;
@@ -410,7 +417,7 @@ function ready(im) { return im.complete && im.naturalWidth > 0; }
     var far = band === 'low';
     return { k: queue.shift(), at: age, dur: (far ? 13 : 9) + Math.random() * 3, dir: lastDir, band: band,
              climb: (Math.random() - 0.5) * 0.14, wob: Math.random() * 6.28,
-             scale: far ? 0.6 + Math.random() * 0.2 : 0.85 + Math.random() * 0.35, light: far ? 0.6 : 0.75 };
+             scale: far ? 0.7 + Math.random() * 0.2 : 1 + Math.random() * 0.35, light: far ? 0.7 : 0.85 };
   }
   function build() {
     var r = rng(11), W = S.w, H = S.h, i;
@@ -544,27 +551,39 @@ function ready(im) { return im.complete && im.naturalWidth > 0; }
 (function () {
   var cv = document.getElementById('beast'), S;
   var B = {
-    storm: { name: 'Tempest Drake', epi: 'Lair: the Thunder Spire', label: 'The Tempest Drake, a blue dragon with lightning running through its wings.',
-      text: 'Lightning runs in its veins and crackles from its jaws when it roars. Raise one from the egg and, once it is grown, it will carry you above the clouds.',
-      fact: '<b>Rideable dragon.</b> Its breath is a bolt of lightning.' },
-    obsidian: { name: 'Obsidian Ravager', epi: 'Lair: the Obsidian Caldera', label: 'The Obsidian Ravager, a black dragon armoured in violet crystal.',
-      text: 'Armoured in volcanic glass, with violet crystal spikes along its spine and tail. It is born in the fire under the mountain and very hard to wound.',
-      fact: '<b>Rideable dragon.</b> One of the eggs a Founder can choose.' },
-    bone: { name: 'Gravebone Wyrm', epi: 'Lair: the Wyrm Barrow', label: 'The Gravebone Wyrm, a skeletal dragon with green fire in its ribs and eyes.',
-      text: 'A dragon that would not stay dead. Its bare bones are bound together by green soul-fire that burns in its ribs and eyes.',
-      fact: '<b>Rideable dragon.</b> One of the eggs a Founder can choose.' },
-    lung: { name: 'Crimson Goldwing', epi: 'Lair: the Cloud Shrine', label: 'The Crimson Goldwing, a red dragon with golden wings and horns.',
-      text: 'A crimson drake with wings of beaten gold, kept by the priests of the Cloud Shrine. Its fire burns bright as the sun.',
-      fact: '<b>Rideable dragon.</b> One of the eggs a Founder can choose.' },
+    storm: { name: 'Tempest Drake', epi: 'Lair: the Thunder Spire', label: 'The elder Tempest Drake in flight, wreathed in blue lightning.',
+      text: 'Lightning runs in its veins and crackles from its jaws when it roars. As an elder it flies inside its own storm, and its breath is a living bolt.',
+      fact: '<b>Elder aura:</b> blue lightning. Grown, it carries its rider above the clouds.' },
+    ember: { name: 'Emberwing Drake', epi: 'Lair: the Ember Lair', label: 'The elder Emberwing Drake in flight, wrapped in orange flame.',
+      text: 'A lean crimson drake whose belly glows like cooling lava and whose jaws never stop smoking. The elder burns so hot the air shimmers around its wings.',
+      fact: '<b>Elder aura:</b> roaring flame. Its fire turns castle gates to ash.' },
+    obsidian: { name: 'Obsidian Ravager', epi: 'Lair: the Obsidian Caldera', label: 'The elder Obsidian Ravager in flight, armoured in violet crystal.',
+      text: 'Armoured in volcanic glass, with violet crystal spikes along its spine and tail. Born in the fire under the mountain, it is almost impossible to wound.',
+      fact: '<b>Elder aura:</b> violet crystal fire. One of the eggs a Founder can choose.' },
+    bone: { name: 'Gravebone Wyrm', epi: 'Lair: the Wyrm Barrow', label: 'The elder Gravebone Wyrm in flight, its bones bound in green soul-fire.',
+      text: 'A dragon that would not stay dead. Bare bones bound together by green soul-fire that burns in its ribs and eyes, and blazes brighter with every year.',
+      fact: '<b>Elder aura:</b> green soul-fire. One of the eggs a Founder can choose.' },
+    lung: { name: 'Crimson Goldwing', epi: 'Lair: the Cloud Shrine', label: 'The elder Crimson Goldwing in flight, golden wings trailing jade light.',
+      text: 'A crimson drake with wings of beaten gold, kept by the priests of the Cloud Shrine. As an elder it trails a jade light across the sky.',
+      fact: '<b>Elder aura:</b> jade spirit-light. One of the eggs a Founder can choose.' },
+    king: { name: 'The Dragon King', epi: 'Lair: the Ashen Crown', label: 'The elder Dragon King in flight, crowned in golden fire.',
+      text: 'The oldest and mightiest dragon alive. Its horns are its crown, and no household can face it alone. Those who raise one rule the sky.',
+      fact: '<b>Elder aura:</b> royal gold. The mightiest beast a house can command.' },
+    ancient: { name: 'Ancient Bloodwyrm', epi: 'Lair: unknown', label: 'The elder Ancient Bloodwyrm in flight, black hide cracked with blood-red fire.',
+      text: 'Black as old ash, with blood-red fire pulsing through every crack in its hide. No one knows where it nests, and few who see it live to say.',
+      fact: '<b>Elder aura:</b> blood-red fire. The rarest of the dragons.' },
     phoenix: { name: 'Aurelion, the Undying Phoenix', epi: 'Chooses its own roost', label: 'Aurelion the phoenix in flight, its feathers burning gold and red.',
       text: 'The rarest beast in the realm. It cannot be hunted, tamed or ridden: it comes only to a just ruler and leaves a tyrant. Once in each generation, a fallen ruler or heir of its house rises again from the phoenix fire.',
       fact: '<b>Legendary.</b> Its tears heal the wounded, and where it nests winter cannot stop the harvest.' }
   };
   var THEME = {
-    storm:    { a: '#14254a', b: '#02040a', glow: 'rgba(90,160,255,', mote: [150, 200, 255] },
-    obsidian: { a: '#2a1446', b: '#050209', glow: 'rgba(165,107,255,', mote: [190, 140, 255] },
-    bone:     { a: '#13301d', b: '#030605', glow: 'rgba(98,240,138,', mote: [120, 255, 150] },
-    lung:     { a: '#47160c', b: '#070201', glow: 'rgba(255,170,70,', mote: [255, 190, 90] },
+    storm:    { a: '#0f2350', b: '#02040a', glow: 'rgba(60,170,255,', mote: [150, 210, 255] },
+    ember:    { a: '#4a1406', b: '#080201', glow: 'rgba(255,120,20,', mote: [255, 170, 60] },
+    obsidian: { a: '#2a1050', b: '#050209', glow: 'rgba(176,70,255,', mote: [210, 150, 255] },
+    bone:     { a: '#0f3318', b: '#030605', glow: 'rgba(70,230,90,', mote: [130, 255, 140] },
+    lung:     { a: '#0d3a3a', b: '#020707', glow: 'rgba(80,226,206,', mote: [150, 245, 225] },
+    king:     { a: '#3d2a06', b: '#070501', glow: 'rgba(255,196,40,', mote: [255, 220, 110] },
+    ancient:  { a: '#3a0508', b: '#070101', glow: 'rgba(232,22,30,', mote: [255, 90, 70] },
     phoenix:  { a: '#47300c', b: '#060301', glow: 'rgba(255,200,110,', mote: [255, 190, 90] }
   };
   var cur = 'storm', since = 0, parts = [], bolt = null, nextBolt = 1.2;
@@ -581,7 +600,7 @@ function ready(im) { return im.complete && im.naturalWidth > 0; }
       var on = b.dataset.k === k; b.setAttribute('aria-selected', on); b.tabIndex = on ? 0 : -1;
       if (on) document.getElementById('lore').setAttribute('aria-labelledby', b.id);
     });
-    if (STILL) draw(4);
+    if (STILL) { var im = k === 'phoenix' ? PHX : elderArt(k); if (ready(im)) draw(4); else im.addEventListener('load', function () { draw(4); }, { once: true }); }
   }
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
   tabs.forEach(function (b, i) {
@@ -638,20 +657,19 @@ function ready(im) { return im.complete && im.naturalWidth > 0; }
         c.drawImage(PHX, fr * 206, 0, 206, 200, -pw / 2, -ph / 2, pw, ph);
       }
     } else {
-      var im = ART[k];
+      var im = elderArt(k), fh = ELDERS[k];
       if (ready(im)) {
-        var breathe = 1 + Math.sin(t * 1.6) * 0.012, iw = Math.min(W * 0.94, H * 0.9 * im.naturalWidth / im.naturalHeight) * breathe, ih = iw * im.naturalHeight / im.naturalWidth;
-        c.translate(W / 2, H / 2 + Math.sin(t * 1.1) * H * 0.012);
-        c.shadowColor = th.glow + '0.55)'; c.shadowBlur = 26;
-        c.drawImage(im, -iw / 2, -ih / 2, iw, ih);
-        if (flash > 0) { c.shadowBlur = 0; c.globalCompositeOperation = 'lighter'; c.globalAlpha = flash * 0.35; c.drawImage(im, -iw / 2, -ih / 2, iw, ih); }
+        var ef = Math.floor(t * 7.14) % 20, ih = Math.min(H * 1.22, W * 1.12 * fh / 460), iw = ih * 460 / fh;
+        c.translate(W / 2, H / 2 + Math.sin(t * 1.1) * H * 0.02);
+        c.drawImage(im, (ef % 8) * 460, Math.floor(ef / 8) * fh, 460, fh, -iw / 2, -ih / 2, iw, ih);
+        if (flash > 0) { c.globalCompositeOperation = 'lighter'; c.globalAlpha = flash * 0.3; c.drawImage(im, (ef % 8) * 460, Math.floor(ef / 8) * fh, 460, fh, -iw / 2, -ih / 2, iw, ih); }
       }
     }
     c.restore();
   }
   size();
   var redraw = loop(cv, draw);
-  [ART.storm, ART.obsidian, ART.bone, ART.lung, PHX].forEach(function (im) { im.addEventListener('load', function () { if (STILL) redraw(); }); });
+  [elderArt('storm'), PHX].forEach(function (im) { im.addEventListener('load', function () { if (STILL) redraw(); }); });
   window.addEventListener('resize', function () { size(); redraw(); });
 })();
 
